@@ -2,28 +2,20 @@ import React from "react";
 import Navbar from "./components/Navbar/navbar";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import "./App.css"
-const Home = () => {
-  return (
-    <>
-      <Navbar />
-      <section className="hero-section">
-        <p>Welcome to </p>
-        <h1> Home Page</h1>
-      </section>
-    </>
-  );
-};
+import Home from "./pages/home/home";
+
 
 const About = () => {
   return (
     
-    <>
+    <div className="about">
       <Navbar />
       <section className="hero-section">
         <p>Welcome to </p>
         <h1> About Page</h1>
       </section>
-    </>
+    
+    </div>
   );
 };
 
@@ -53,6 +45,7 @@ const Contact = () => {
 
 const App = () => {
   return (
+    <div className="app">
     <BrowserRouter>
     <Routes>
        <Route exact path="/contact" element={<Home />} />
@@ -71,6 +64,7 @@ const App = () => {
        
     </Routes>
     </BrowserRouter>
+    </div>
   );
 };
 

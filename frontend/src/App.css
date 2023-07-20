@@ -4,3 +4,11 @@
     font-family: "Times New Roman", Times, serif;
     
 }
+
+
+.app{
+    background-color: hsla(232, 15%, 21%, 1);
+    min-height: 100vh;
+    height: max-content;
+    margin-top: 0px;
+}
