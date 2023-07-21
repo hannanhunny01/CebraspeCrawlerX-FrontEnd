@@ -1,17 +1,25 @@
 .main-home-text {
     text-align: center;
     max-width: 60%;
-    margin: 0 auto; /* This will center the element horizontally */
-    height:90vh;
-    
+    margin: 0 auto;
+    height: 90vh;
+    font-family: 'Your Chosen Font', sans-serif;
 }
 
 .main-home-text h3 {
     font-size: 35px;
-    color: black;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+    transition: color 0.3s ease-in-out;
+}
+
+.main-home-text h3:hover {
+    color: #ff6347; /* Change to a color of your choice on hover */
 }
 
 .main-home-text p {
     font-size: 20px;
-    color: azure;
+    color: #c1b9b9;
+    line-height: 1.6;
 }
