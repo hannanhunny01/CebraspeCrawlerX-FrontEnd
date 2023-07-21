@@ -9,8 +9,8 @@ const Navbar = () => {
         {/* 1st logo part  */}
         <div className="main-nav-one">
           <h2>
-            <span>C</span>BRASPE
-            <span>C</span>RAWLER
+            <span>C</span>braspe
+            <span>C</span>rawler
             <span>X</span>
           </h2>
         </div>

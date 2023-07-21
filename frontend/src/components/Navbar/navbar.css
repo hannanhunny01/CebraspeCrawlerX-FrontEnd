@@ -4,28 +4,33 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #c3bfbf;
-    padding: 10px 30px;
+    background-color: #7e56c2;
+    padding: 7px 0px;
     height: auto;
     min-height: 8vh;
+    border-color: #5c997e;
+    position: fixed;
+    width: 100%;
+   
   }
   
   .main-nav-one {
     flex: 1;
+
   }
   
   .main-nav-one h2 {
     display: inline-block;
-    font-size: 22px;
+    font-size: 20px;
     margin: 0;
     padding: 0;
-    color: #110d0d;
+    color: #ffffff;
     animation: forwards;
   }
   
   .main-nav-one h2 span {
     font-size: 29px;
-    color: #060607;
+    color: #ffffff;
   }
   
   .main-nav-two {
@@ -46,13 +51,13 @@
   
   .main-nav-two li a {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
     font-size: 16px;
     font-weight: bold;
   }
   
   .main-nav-two li a:hover {
-    color: #007bff;
+    color: #ffffff;
   }
   
   .main-nav-three {
@@ -75,13 +80,13 @@
   
   .main-nav-three li a {
     text-decoration: none;
-    color: #007bff;
-    font-size: 16px;
+    color: #ffffff;
+    font-size: 19px;
     font-weight: bold;
   }
   
   .main-nav-three li a:hover {
-    color: #0056b3;
+    color: #ffffff;
   }
   
   /* Additional styles for login and signup buttons */
