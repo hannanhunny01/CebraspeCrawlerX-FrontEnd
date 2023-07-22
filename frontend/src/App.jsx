@@ -2,8 +2,10 @@ import React from "react";
 import Navbar from "./components/Navbar/navbar";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import "./App.css"
-import Home from "./pages/home/home";
 
+
+import Home from "./pages/home/home";
+import Login from "./pages/login/login";
 
 const About = () => {
   return (
@@ -61,6 +63,8 @@ const App = () => {
       
 
       <Route path="/contact" element={<Contact />} />
+
+      <Route path="/login" element={<Login />} />
        
     </Routes>
     </BrowserRouter>
