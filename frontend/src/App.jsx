@@ -6,6 +6,7 @@ import "./App.css"
 
 import Home from "./pages/home/home";
 import Login from "./pages/login/login";
+import SignUp from "./pages/signup/signup";
 
 const About = () => {
   return (
@@ -65,6 +66,7 @@ const App = () => {
       <Route path="/contact" element={<Contact />} />
 
       <Route path="/login" element={<Login />} />
+      <Route exact path="/signup" element={<SignUp />} />
        
     </Routes>
     </BrowserRouter>
