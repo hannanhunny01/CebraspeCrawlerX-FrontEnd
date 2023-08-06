@@ -1,43 +1,46 @@
 import React, { useState } from 'react';
 import './signup.css';
-
-
-
+import Navbar from '../../components/Navbar/navbar';
 import FirstSection from '../../components/register/registerFirst/firstSection';
 import SecondSection from '../../components/register/registerSecond/secondSection';
-const SignUp = () => {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [celular, setCelular] = useState('');
-  const [senha, setSenha] = useState('');
-  const [reSenha, setReSenha] = useState('');
+import ThirdSection from '../../components/register/registerthird/thirdSection';
 
-  const handleSignUp = (e) => {
-    e.preventDefault();
-    // Add your sign-up logic here
-  };
+const SignUpPage = () => {
+  const [name ,setName] = useState('');
+  const [email ,setEmail] = useState('');
+  const [phone ,setPhone] = useState(0);
+  const [password,setPassword] = useState('');
+  const [code,setCode]= useState();
 
+  const components =[<FirstSection/>,<SecondSection/>,<ThirdSection/>]
+  const [currPage,setCurrPage] = useState(0);
   return (
-    <div className="sign-up-form">
-      <form onSubmit={handleSignUp}>
-        <FirstSection
-          nome={nome}
-          email={email}
-          celular={celular}
-          setNome={setNome}
-          setEmail={setEmail}
-          setCelular={setCelular}
-        />
-        <SecondSection
-          senha={senha}
-          reSenha={reSenha}
-          setSenha={setSenha}
-          setReSenha={setReSenha}
-        />
-        <button type="submit">Sign Up</button>
-      </form>
+    <div className='main-signup'>
+     <Navbar/>
+     <div className='signup-container'>
+     <div className='signup-card'>
+     <h2>Registrar</h2>
+         
+         {components[currPage]}
+
+    <div>
+
+    {  currPage>0?<button className="login-button" onClick={()=>{setCurrPage(currPage-1)}}>
+            Voltar
+          </button> :false}
+          <button className="login-button" onClick={()=>{setCurrPage(currPage+1)}} >
+            {currPage<=1?"Next":"confirm"}
+          </button>
+          
+          </div>
+
+
+
+
+     </div>
+    </div>
     </div>
   );
 };
 
-export default SignUp;
+export default SignUpPage;
