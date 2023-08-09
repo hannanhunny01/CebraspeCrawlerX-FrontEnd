@@ -2,9 +2,11 @@ import React from "react";
 import Navbar from "./components/Navbar/navbar";
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import "./App.css"
+
+
 import Home from "./pages/home/home";
-
-
+import LoginPage from "./pages/login/login";
+import SignUpPage from "./pages/signup/signup";
 const About = () => {
   return (
     
@@ -61,6 +63,9 @@ const App = () => {
       
 
       <Route path="/contact" element={<Contact />} />
+
+      <Route path="/login" element={<LoginPage />} />
+      <Route exact path="/signup" element={<SignUpPage />} />
        
     </Routes>
     </BrowserRouter>

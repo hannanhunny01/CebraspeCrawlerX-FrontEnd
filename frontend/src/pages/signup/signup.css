@@ -1,13 +1,13 @@
 /* Add these styles to the existing CSS */
 
-.login-container {
+.signup-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 90vh;
 }
 
-.login-card {
+.signup-card {
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   padding: 20px;
@@ -41,19 +41,8 @@ h2 {
   font-size: 16px;
 }
 
-.login-button {
-  width: 100%;
-  padding: 12px;
-  background-color: #000101;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px; /* Add some spacing between the button and icons */
-}
 
-.login-button:hover {
+.signup-button:hover {
   background-color: #000000;
 }
 
@@ -63,7 +52,7 @@ h2 {
   margin-top: 20px; /* Add some spacing between the icons and the button */
 }
 
-.login-icon {
+.signup-icon {
   width: 50px;
   height: 50px;
   margin: 0 10px; /* Add some spacing between the icons */
@@ -73,11 +62,8 @@ h2 {
   padding: 5px; /* Optional: Add some padding to the icons */
 }
 
-.login-forgotpassword{
- margin-top: 3px;
- padding: 10px;
-}
-.login-icon-container{
+
+.signup-icon-container{
   padding: 5px;
   display: flex;
   justify-content: center;
