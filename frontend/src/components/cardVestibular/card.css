@@ -1,0 +1,34 @@
+.card-vest {
+    border: 2px solid #fffafa;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(227, 225, 225, 0.1);
+    padding: 15px;
+    background-color:#eeeae1;
+    margin-bottom: 16px;
+    min-width: 240px; /* Minimum width */
+    max-width: 240px; /* Adjusts to available width */
+    height: 240px;
+    display: flex;
+    flex-direction: column; /* Puts title on top, button on bottom */
+    justify-content: space-between; /* Spacing between title and button */
+    text-align: center; /* Center align text inside */
+    margin: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 1);
+    
+  }
+  
+  .button-card {
+    background-color: #d89300;
+    padding: 15px 40px;
+    color: #fff;
+    transition: background 0.3s ease-out 0s;
+    font-size: 16px;
+    border: none; /* Remove default button border */
+    border-radius: 0.2px; /* Add button border radius */
+    cursor: pointer; /* Change cursor on hover */
+  }
+  
+  .card-text-part {
+    padding: 5px;
+  }
+  
