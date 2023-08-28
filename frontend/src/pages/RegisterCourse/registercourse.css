@@ -1,5 +1,11 @@
-.main-register-course{
+
+
+.main-register-cards{
 
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    
+    
 }
+

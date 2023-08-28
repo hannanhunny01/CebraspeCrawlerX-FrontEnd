@@ -1,34 +1,43 @@
 .card-vest {
-    border: 2px solid #fffafa;
-    border-radius: 3px;
-    box-shadow: 0 2px 4px rgba(227, 225, 225, 0.1);
-    padding: 15px;
-    background-color:#eeeae1;
-    margin-bottom: 16px;
-    min-width: 240px; /* Minimum width */
-    max-width: 240px; /* Adjusts to available width */
-    height: 240px;
-    display: flex;
-    flex-direction: column; /* Puts title on top, button on bottom */
-    justify-content: space-between; /* Spacing between title and button */
-    text-align: center; /* Center align text inside */
-    margin: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 1);
-    
-  }
-  
-  .button-card {
-    background-color: #d89300;
-    padding: 15px 40px;
-    color: #fff;
-    transition: background 0.3s ease-out 0s;
-    font-size: 16px;
-    border: none; /* Remove default button border */
-    border-radius: 0.2px; /* Add button border radius */
-    cursor: pointer; /* Change cursor on hover */
-  }
-  
-  .card-text-part {
-    padding: 5px;
-  }
-  
+  border: 2px solid #fffafa;
+  border-radius: 2px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 20px; 
+  background-color: #e7efeb; 
+  margin-bottom: 20px; 
+  width: 240px; 
+  height: 280px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; /* Center align horizontally */
+  text-align: center;
+  margin: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  transition: transform 0.2s ease-in-out; /* Add smooth transform animation */
+}
+
+.card-vest:hover {
+  transform: translateY(-5px); 
+}
+
+.button-card {
+  background-color: #ff9900; 
+  padding: 15px 50px;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 1px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease-out, transform 0.2s ease-in-out; 
+  filter: saturate(80%)
+}
+
+.button-card:hover {
+  background-color: #e68a00; 
+  transform: scale(1.15); 
+}
+
+.card-text-part {
+  padding: 10px; 
+}

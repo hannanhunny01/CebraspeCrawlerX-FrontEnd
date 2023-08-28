@@ -8,9 +8,27 @@ function RegisterCoursePage(){
     return(
   <div>
     <Navbar/>
-    <NavItems/>
-     <div className="main-register-course"> 
+    <div className="main-register-nav-items"><NavItems/></div>
+    
+
+    <div className="main-register-course">
+     <div className="main-register-cards"> 
      
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
+    <Card/>
     <Card/>
     <Card/>
     <Card/>
@@ -29,7 +47,9 @@ function RegisterCoursePage(){
     
     <Card/>
      </div>
-    hello
+
+     </div>
+
   </div>
 
     )
