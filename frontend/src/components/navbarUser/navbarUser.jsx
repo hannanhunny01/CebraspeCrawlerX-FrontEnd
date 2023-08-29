@@ -11,11 +11,8 @@ const Navbar = () => {
       <nav className="main-nav">
         {/* 1st logo part  */}
         <div className="main-nav-one">
-          <h2>
-            <span>C</span>braspe
-            <span>C</span>rawler
-            <span>X</span>
-          </h2>
+          <input className="navbar-user-input" placeholder="Pesquisar Aqui" type="text"></input>
+          <button className="navbar-user-button">Submit</button>
         </div>
 
         {/* 2nd menu part  */}
