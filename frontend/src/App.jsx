@@ -9,6 +9,7 @@ import LoginPage from "./pages/login/login";
 import SignUpPage from "./pages/signup/signup";
 import RegisterCoursePage from "./pages/RegisterCourse/registercourse";
 import { UserContext } from "./Context/userContext";
+import PasItems from "./components/pasitems/pasitems";
 const About = () => {
   return (
     
@@ -70,7 +71,7 @@ const App = () => {
       <Route exact path="/signup" element={<SignUpPage />} />
 
       <Route path="/registerCourse" element={<RegisterCoursePage />} />
-       
+      <Route path="/pasitems" element={<PasItems />} />
     </Routes>
     </BrowserRouter>
     </div>
