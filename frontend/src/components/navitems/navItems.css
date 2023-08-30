@@ -10,6 +10,7 @@
   margin-bottom: 5px;
   font-family: 'Times New Roman', Times, serif;
   font-size: larger;
+  min-width: fit-content;
 
 }
 
@@ -22,7 +23,7 @@
 }
 
 .nav-list li {
-  padding: 10px;
+  padding: 10px 40px;
 
 }
 
@@ -35,4 +36,8 @@
 
 .nav-list li a:hover {
   color: #4f412b;
+}
+
+.nav-list li.selected {
+  background-color: #4f412b;
 }

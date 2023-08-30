@@ -8,8 +8,9 @@ import Home from "./pages/home/home";
 import LoginPage from "./pages/login/login";
 import SignUpPage from "./pages/signup/signup";
 import RegisterCoursePage from "./pages/RegisterCourse/registercourse";
+import MyCoursePage from "./pages/myCourse/myCourse";
 import { UserContext } from "./Context/userContext";
-import PasItems from "./components/pasitems/pasitems";
+
 const About = () => {
   return (
     
@@ -70,8 +71,8 @@ const App = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route exact path="/signup" element={<SignUpPage />} />
 
-      <Route path="/registerCourse" element={<RegisterCoursePage />} />
-      <Route path="/pasitems" element={<PasItems />} />
+      <Route path="/items" element={<RegisterCoursePage />} />
+      <Route path="/myitems" element={<MyCoursePage />} />
     </Routes>
     </BrowserRouter>
     </div>

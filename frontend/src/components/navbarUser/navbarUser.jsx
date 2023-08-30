@@ -19,10 +19,10 @@ const Navbar = () => {
         <div className="main-nav-two">
           <ul>
             <li>
-              <NavLink to="/">Inscrever</NavLink>
+              <NavLink to="/items">Inscrever</NavLink>
             </li>
             <li>
-              <NavLink to="/about">Meu Cadastros</NavLink>
+              <NavLink to="/myitems">Meu Cadastros</NavLink>
             </li>
             
           </ul>
@@ -32,7 +32,7 @@ const Navbar = () => {
         <div className="main-nav-three">
           <ul className="main-nav-three-ul">
             <li>
-              <label for="profile-dropdown"> asdasds</label>
+              <label htmlFor="profile-dropdown"> asdasds</label>
             <select className="profile-dropdown">
             <option value="fruit"> V</option>
             <option value="fruit"> <NavLink to="/login">hello</NavLink></option>

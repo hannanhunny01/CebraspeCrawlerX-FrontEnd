@@ -1,9 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../Context/userContext";
-import axios from 'axios';
-import Card from "../cardVestibular/card";
+import { UserContext } from "../../../Context/userContext";
+import Card from "../../cardVestibular/card";
 
-function PasItems() {
+function MyPasItems() {
   const [token] = useContext(UserContext);
   const [items, setItems] = useState([]); // Manage items using state
 
@@ -18,7 +17,7 @@ function PasItems() {
       };
 
       try {
-        const response = await fetch("http://localhost:3000/api/items/getPas", requestOptions);
+        const response = await fetch("http://localhost:3000/api/items/getMyPas", requestOptions);
         
         if (response.ok) {
           const itemsData = await response.json();
@@ -42,4 +41,4 @@ function PasItems() {
   );
 }
 
-export default PasItems;
+export default MyPasItems;
