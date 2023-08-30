@@ -14,6 +14,10 @@ const SignUpPage = () => {
 
   const components =[<FirstSection/>,<SecondSection/>,<ThirdSection/>]
   const [currPage,setCurrPage] = useState(0);
+
+  const checkEmailExist = async function(){
+    
+  }
   return (
     <div className='main-signup'>
      <Navbar/>

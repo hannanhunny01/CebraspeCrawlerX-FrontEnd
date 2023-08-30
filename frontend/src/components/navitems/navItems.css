@@ -1,6 +1,43 @@
-.ul{
-    list-style-type: none;
-  }
-.nav-items{
-    list-style: none;
+.div-container-navitems {
+  background-color: #50837c;
+
+  padding: 10px 10px;
+  border-radius: 2px;
+  max-width: 60%;
+  margin: 0 auto;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: larger;
+  min-width: fit-content;
+
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding: 0;
+}
+
+.nav-list li {
+  padding: 10px 40px;
+
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: #f3f3f3;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+.nav-list li a:hover {
+  color: #4f412b;
+}
+
+.nav-list li.selected {
+  background-color: #4f412b;
 }
