@@ -1,7 +1,7 @@
 import Navbar from "../../components/navbarUser/navbarUser";
 import Card from "../../components/cardVestibular/card";
 import './registercourse.css'
-import NavItems from "../../components/navitems/navitems";
+import NavItems from "../../components/navitems/navItems";
 import PasItems from "../../components/items/pasitems/pasitems";
 import VestItems from "../../components/items/vestitems/vestitems";
 import ConItems from "../../components/items/conitems/conItems";
@@ -18,6 +18,7 @@ function RegisterCoursePage(){
     return(
   <div>
     <Navbar/>
+    
     <div className="main-register-nav-items">
       <NavItems
                     setSelectedComponent={setSelectedComponent}

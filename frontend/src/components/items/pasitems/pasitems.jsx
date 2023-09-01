@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../Context/userContext";
 import Card from "../../cardVestibular/card";
-
 function PasItems() {
   const [token] = useContext(UserContext);
   const [items, setItems] = useState([]); // Manage items using state
@@ -32,12 +31,14 @@ function PasItems() {
   }, [token]); // Include token in the dependency array
 
   return (
+   
     <>
        {items.map((item, index) => (
      
      <Card key={index}   name={item.stage_pas} date={item.year_pas} />
    ))}
     </>
+   
   );
 }
 

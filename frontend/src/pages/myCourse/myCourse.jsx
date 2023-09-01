@@ -1,6 +1,7 @@
 import Navbar from "../../components/navbarUser/navbarUser";
 import './myCourse.css'
-import NavItems from "../../components/navitems/navitems";
+import NavItems from "../../components/navitems/navItems";
+
 
 
 import MyConItems from "../../components/myItems/myConItems/myConItems";
