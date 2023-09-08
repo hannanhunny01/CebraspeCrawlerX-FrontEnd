@@ -1,6 +1,5 @@
 .div-container-navitems {
   background-color: #50837c;
-
   padding: 10px 10px;
   border-radius: 2px;
   max-width: 60%;
@@ -11,7 +10,6 @@
   font-family: 'Times New Roman', Times, serif;
   font-size: larger;
   min-width: fit-content;
-
 }
 
 .nav-list {
@@ -24,7 +22,8 @@
 
 .nav-list li {
   padding: 10px 40px;
-
+  border-radius: 3px;
+  
 }
 
 .nav-list li a {
@@ -40,4 +39,21 @@
 
 .nav-list li.selected {
   background-color: #4f412b;
+}
+
+/* Mobile styles - Flex column */
+@media screen and (max-width: 768px) {
+  .div-container-navitems {
+    max-width: 100%; 
+    padding: 10px 0; 
+  }
+
+  .nav-list {
+    flex-direction: column; 
+    align-items: center; 
+  }
+
+  .nav-list li {
+    padding: 10px 0; 
+  }
 }

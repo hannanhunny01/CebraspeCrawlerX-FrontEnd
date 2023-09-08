@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SecondSection = ({ password, setpassword, rePassword, setRePassword }) => {
+const SecondSection = ({ password, setPassword, rePassword, setRePassword }) => {
   return (
     <div className="register-second-section">
        <div className="form-group">
@@ -9,9 +9,11 @@ const SecondSection = ({ password, setpassword, rePassword, setRePassword }) => 
             </label>
             <input
               className="input-field"
-              placeholder="Enter your email"
+              placeholder="Digite Senha"
               type="password"
               id="password-register"
+              value ={password}
+              onChange={(e)=>setPassword(e.target.value)}
             />
           </div>
 
@@ -21,9 +23,11 @@ const SecondSection = ({ password, setpassword, rePassword, setRePassword }) => 
             </label>
             <input
               className="input-field"
-              placeholder="Enter your email"
+              placeholder="Digite Senha "
               type="password"
               id="repassword-register"
+              value ={rePassword}
+              onChange={(e)=>setRePassword(e.target.value)}
             />
           </div>
     </div>

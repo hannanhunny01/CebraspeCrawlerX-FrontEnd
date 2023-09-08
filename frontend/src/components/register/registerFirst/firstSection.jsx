@@ -1,7 +1,7 @@
 import React from 'react';
 import facebook from "../../../assets/icons/facebookicon.png"
 import google from "../../../assets/icons/googleicon.png"
-const FirstSection = ({ nome, email, celular, setNome, setEmail, setCelular }) => {
+const FirstSection = ({ name, email, phone, setName, setEmail, setPhone }) => {
   return (
     <div className="register-first-section">
       <div className="form-group">
@@ -13,6 +13,8 @@ const FirstSection = ({ nome, email, celular, setNome, setEmail, setCelular }) =
               placeholder="Enter your Name"
               type="name"
               id="name-register"
+              value={name}
+              onChange={(e)=>setName(e.target.value)}
             />
           </div>
           
@@ -25,6 +27,8 @@ const FirstSection = ({ nome, email, celular, setNome, setEmail, setCelular }) =
               placeholder="Enter your email"
               type="email"
               id="email-register"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
             />
           </div>
 
@@ -37,6 +41,8 @@ const FirstSection = ({ nome, email, celular, setNome, setEmail, setCelular }) =
               placeholder="Enter your email"
               type="email"
               id="phone-register"
+              value={phone}
+              onChange={(e)=>setPhone(e.target.value)}
             />
           </div>
           <div style={{'textAlign':'center','fontSize':'15px'}} >Ou Cadastrar usando</div>

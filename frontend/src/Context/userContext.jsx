@@ -19,10 +19,17 @@ export const UserProvider = (props) => {
 
       if (!response.ok) {
         setToken(null);
+        localStorage.removeItem("mytoken"); 
       }
-      localStorage.setItem("mytoken", token);
     };
+
     fetchUser();
+  }, [token]);
+
+  useEffect(() => {
+    if (token !== null) {
+      localStorage.setItem("mytoken", token); 
+    }
   }, [token]);
 
   return (

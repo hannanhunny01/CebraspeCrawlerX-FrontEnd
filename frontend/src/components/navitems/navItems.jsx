@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import './navitems.css';
+import './navItems.css';
 
 function NavItems({  setSelectedComponent  }) {
     return (

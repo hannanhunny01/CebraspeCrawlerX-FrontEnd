@@ -1,11 +1,11 @@
-import React, { useState ,useContext } from "react";
+import React, { useState ,useContext, useEffect } from "react";
 import Navbar from "../../components/Navbar/navbar";
 import facebook from "../../assets/icons/facebookicon.png"
 import google from "../../assets/icons/googleicon.png"
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from "../../Context/userContext";
- 
+import { useNavigate } from "react-router-dom";
 import "./login.css";
 
 const LoginPage = () => {
@@ -14,13 +14,17 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const handleLogin = () => {
-    if (username === "user123" && password === "pass123") {
-      console.log("Login successful!");
-    } else {
-      setErrorMessage("Invalid username or password");
-    }
-  };
+  const navigate = useNavigate()
+
+
+  useEffect(() => {
+    if (token) {
+navigate('/items')    } 
+  }, [token]);
+
+   
+
+ 
  
   
   const postData = async() =>{
