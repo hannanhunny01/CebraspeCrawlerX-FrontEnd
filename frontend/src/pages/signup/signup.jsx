@@ -14,12 +14,12 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   const [code,setCode]= useState("");
   const [timer,setTimer] = useState(false);
-
+  const [sendFirstTime , setSendFirstTime] = useState(true)
 
 
   const components =[<FirstSection name={name} email={email} phone={phone} setEmail={setEmail} setName={setName} setPhone={setPhone} />,
                      <SecondSection password={password} setPassword={setPassword} rePassword={rePassword} setRePassword={setRePassword}/>,
-                     <ThirdSection phone={phone} code={code} setCode={setCode} timer={timer} setTimer={setTimer}/>]
+                     <ThirdSection phone={phone} code={code} setCode={setCode} timer={timer} setTimer={setTimer} />]
   const [currPage,setCurrPage] = useState(0);
 
   const checkEmail = async function(){   
@@ -54,9 +54,11 @@ const SignUpPage = () => {
         if (password == rePassword){
          
           setCurrPage(currPage+1);
-          if (localStorage.getItem('initialTime') !== null) {
 
-          sendCode();}
+    
+              sendCode();
+           
+                   
           console.log("hhello")
         }else{
           alert("password not same")

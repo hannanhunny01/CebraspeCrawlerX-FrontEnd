@@ -2,21 +2,43 @@ import React, { useState, useEffect } from 'react';
 
 const CountdownTimer = () => {
   const initialTime = 10 * 60; // 10 minutes in seconds
-  const storedInitialTime = parseInt(localStorage.getItem('initialTime')) || initialTime;
-
-  const [timeRemaining, setTimeRemaining] = useState(storedInitialTime);
+  const [timeRemaining, setTimeRemaining] = useState(initialTime);
 
   useEffect(() => {
-    localStorage.setItem('initialTime', timeRemaining.toString());
+    const storedInitialTime = parseInt(localStorage.getItem('initialTime'));
+    const storedStartTime = parseInt(localStorage.getItem('startTime'));
 
-    const interval = setInterval(() => {
+    if (storedInitialTime && storedStartTime) {
+      const currentTime = Math.floor(Date.now() / 1000);
+      const elapsedTime = currentTime - storedStartTime;
+      const remainingTime = storedInitialTime - elapsedTime;
+
+      if (remainingTime > 0) {
+        setTimeRemaining(remainingTime);
+      } else {
+        // Timer has expired, reset to initial time
+        localStorage.setItem('initialTime', initialTime.toString());
+        localStorage.setItem('startTime', currentTime.toString());
+        setTimeRemaining(initialTime);
+      }
+    } else {
+      // Initial setup
+      const currentTime = Math.floor(Date.now() / 1000);
+      localStorage.setItem('initialTime', initialTime.toString());
+      localStorage.setItem('startTime', currentTime.toString());
+    }
+
+    const timerInterval = 1000;
+    const updateTimer = () => {
       if (timeRemaining > 0) {
         setTimeRemaining(timeRemaining - 1);
       }
-    }, 1000);
+    };
+
+    const timerId = setInterval(updateTimer, timerInterval);
 
     return () => {
-      clearInterval(interval);
+      clearInterval(timerId);
     };
   }, [timeRemaining]);
 

@@ -16,8 +16,9 @@ function RegisterCoursePage(){
 
 
     return(
-  <div>
-    <Navbar/>
+  <div >
+    <div className="registercourse-div"> <Navbar/></div>
+   
     
     <div className="main-register-nav-items">
       <NavItems
