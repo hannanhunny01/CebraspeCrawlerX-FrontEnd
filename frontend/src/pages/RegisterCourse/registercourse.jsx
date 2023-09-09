@@ -7,13 +7,12 @@ import VestItems from "../../components/items/vestitems/vestitems";
 import ConItems from "../../components/items/conitems/conItems";
 import { useState } from "react";
 function RegisterCoursePage(){
-    
   const [selectedComponent, setSelectedComponent] = useState(0);
   
   const items = [<PasItems/>,<VestItems/>,<ConItems/>]
 
 
-
+  
 
     return(
   <div >

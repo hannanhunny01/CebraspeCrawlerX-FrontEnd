@@ -32,6 +32,35 @@
   transition: background-color 0.3s ease-out, transform 0.2s ease-in-out; 
   filter: saturate(80%)
 }
+.button-card-green {
+  background-color: #1adf2a; 
+  padding: 15px 50px;
+  color: #16a827;
+  font-size: 16px;
+  border: none;
+  border-radius: 1px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease-out, transform 0.2s ease-in-out; 
+  filter: saturate(80%)
+}
+.button-card-green span:hover{
+  display: none;
+}
+.button-card-green:hover:before {
+  content: "Cancelar Inscrição";
+}
+.button-card-green:hover {
+  background-color: #fa3c07; 
+  transform: scale(1.15); 
+  
+}
+
+
+
+
+
+
+
 
 .button-card:hover {
   background-color: #e68a00; 

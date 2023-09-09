@@ -13,6 +13,7 @@ const Navbar = () => {
     setShowDropdown(!showDropdown);
   };
 
+
   const [token,setToken] = useContext(UserContext)
    
   const logout = () =>{
@@ -21,7 +22,8 @@ const Navbar = () => {
       navigate('/login')
      }
   }
-
+  
+  useEffect(()=>{if(!token){navigate('/login')}},[token])
 
 
   return (

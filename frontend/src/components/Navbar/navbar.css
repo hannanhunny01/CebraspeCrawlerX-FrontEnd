@@ -2,7 +2,7 @@
 
 .main-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly !important;
     align-items: center;
     background-color: #55595c;;
     padding: 7px 0px;

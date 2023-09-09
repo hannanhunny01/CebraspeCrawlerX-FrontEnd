@@ -8,7 +8,7 @@ function ConItems(){
 
     const [token] = useContext(UserContext);
     const [items, setItems] = useState([]); // Manage items using state
-  
+     
     useEffect(() => {
       const fetchUser = async () => {
         const requestOptions = {
@@ -25,20 +25,20 @@ function ConItems(){
           if (response.ok) {
             const itemsData = await response.json();
             setItems(itemsData)
-            console.log(items)
+            console.log(items ,"hello")
           }
         } catch (error) {
           console.error('Error fetching data:', error);
         }
       };
       fetchUser();
-    }, [token]); // Include token in the dependency array
+    }, [token]); 
   
     return (
       <>
          {items.map((item, index) => (
-       
-       <Card key={index}   name={item.name} date={item.vagas} />
+         
+       <Card key={index}   name={item.name} date={item.vagas} isSubscribed={false} />
      ))}
       </>
     );

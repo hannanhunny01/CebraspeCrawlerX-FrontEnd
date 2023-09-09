@@ -38,7 +38,7 @@ function MyConItems(){
       <>
          {items.map((item, index) => (
        
-       <Card key={index}   name={item.name} date={item.vagas} />
+       <Card key={index}   name={item.name} date={item.vagas}  isSubscribed={true}/>
      ))}
       </>
     );

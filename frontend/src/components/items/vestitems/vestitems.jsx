@@ -36,7 +36,7 @@ function VestItems(){
       <>
          {items.map((item, index) => (
        
-       <Card key={index}   name={item.name} date={""} />
+       <Card key={index}   name={item.name} date={""} isSubscribed={false} />
      ))}
       </>
     );

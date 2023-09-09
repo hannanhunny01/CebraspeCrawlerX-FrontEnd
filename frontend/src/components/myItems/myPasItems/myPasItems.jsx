@@ -35,7 +35,7 @@ function MyPasItems() {
     <>
        {items.map((item, index) => (
      
-     <Card key={index}   name={item.stage_pas} date={item.year_pas} />
+     <Card key={index}   name={item.stage_pas} date={item.year_pas} isSubscribed={true} />
    ))}
     </>
   );

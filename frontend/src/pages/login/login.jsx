@@ -23,29 +23,45 @@ navigate('/items')    }
   }, [token]);
 
    
+ const postData = async ()=>{
 
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body:JSON.stringify({
+      email: email,
+      password: password
+    })
+  };
+
+   try{
+    
+    const response = await fetch("http://localhost:3000/api/user/login", requestOptions);
+    const data = await response.json()
+
+    if (response.ok){
+      setToken(data.token);
+      alert("Login SucessFul");
+      navigate('/items')
+
+    }else if(response.status === 401){
+      alert(data.message);
+    }else{
+      alert("Error")
+    }
+
+   }
+   catch(error){
+    console.log(error)
+   }
+ }
  
  
   
-  const postData = async() =>{
-    try{
-    const response = await axios.post("http://localhost:3000/api/user/login",{email:email ,password:password})
-    console.log(response.status)
-    if (response.status == 200){
-     setToken(response.data.token)
-    console.log(response.data.token)
-     alert("login SucessFul")
-    }else{
-      alert("invalid Credentials")
 
-    }
-  }
-    catch(error){
-      console.log(error)
-    }
-
-  }
-
+  
    
 
 
