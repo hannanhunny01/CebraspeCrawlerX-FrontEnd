@@ -5,7 +5,7 @@ import Card from "../../cardVestibular/card";
 function VestItems(){
 
     const [token] = useContext(UserContext);
-    const [items, setItems] = useState([]); // Manage items using state
+    const [items, setItems] = useState([]); 
   
     useEffect(() => {
       const fetchUser = async () => {
@@ -30,13 +30,38 @@ function VestItems(){
         }
       };
       fetchUser();
-    }, [token]); // Include token in the dependency array
+    }, [token]);
+    
+    const handleClick = async function(id){
+      
+      const requestOptions = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+           Authorization: `Bearer ${token}`,
+        },
+        body:JSON.stringify({
+          vestibularId: id
+        })
+      };
+  
+      const response = await fetch("http://localhost:3000/api/items/registerVestibular", requestOptions);
+      
+  
+      if(response.ok){
+        setItems(items.filter(item => item._id !== id));
+        const data = await response.json();
+        alert(data.message);
+      }  
+    }
+
+    
   
     return (
       <>
          {items.map((item, index) => (
        
-       <Card key={index}   name={item.name} date={""} isSubscribed={false} />
+       <Card key={index}   name={item.name} date={""} isSubscribed={false} onClick={()=>handleClick(item._id)} />
      ))}
       </>
     );

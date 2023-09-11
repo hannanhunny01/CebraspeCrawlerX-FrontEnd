@@ -4,8 +4,8 @@ import Card from "../../cardVestibular/card";
 
 function MyPasItems() {
   const [token] = useContext(UserContext);
-  const [items, setItems] = useState([]); // Manage items using state
-
+  const [items, setItems] = useState([]); 
+  const [render ,setRender] = useState(false)
   useEffect(() => {
     const fetchUser = async () => {
       const requestOptions = {
@@ -22,20 +22,41 @@ function MyPasItems() {
         if (response.ok) {
           const itemsData = await response.json();
           setItems(itemsData)
-          console.log(items)
         }
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
     fetchUser();
-  }, [token]); // Include token in the dependency array
+  }, [token,render]); 
+
+  const handleClick = async (id) =>{
+    const requestOptions = {
+       method: 'DELETE' ,
+       headers:{
+         "Content-Type": "application/json",
+         Authorization: `Bearer ${token}`
+       },
+       body:JSON.stringify({ 
+        pasId:id
+     })
+
+    }
+    const response = await fetch("http://localhost:3000/api/items/deltePasByUser", requestOptions)
+    if(response.ok){
+     setRender(!render);
+    const data  = await response.json();
+    alert(data.message);
+
+     
+    }
+   }
 
   return (
     <>
-       {items.map((item, index) => (
+       {items.map((item) => (
      
-     <Card key={index}   name={item.stage_pas} date={item.year_pas} isSubscribed={true} />
+     <Card name={item.stage_pas} date={item.year_pas} isSubscribed={true} onClick={()=>handleClick(item._id)} />
    ))}
     </>
   );

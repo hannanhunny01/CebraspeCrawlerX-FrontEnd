@@ -6,7 +6,7 @@ function MyVestItems(){
 
     const [token] = useContext(UserContext);
     const [items, setItems] = useState([]); // Manage items using state
-  
+    const [render,setRender] = useState(false);
     useEffect(() => {
       const fetchUser = async () => {
         const requestOptions = {
@@ -30,14 +30,41 @@ function MyVestItems(){
         }
       };
       fetchUser();
-    }, [token]); // Include token in the dependency array
+    }, [token ,render]); 
+
+
+    const handleClick = async (id) =>{
+      const requestOptions = {
+         method: 'DELETE' ,
+         headers:{
+           "Content-Type": "application/json",
+           Authorization: `Bearer ${token}`
+         },
+         body:JSON.stringify({ 
+          vestibularId:id
+       })
+  
+      }
+      const response = await fetch("http://localhost:3000/api/items/delteVestibularByUser", requestOptions)
+      if(response.ok){
+       setRender(!render);
+      const data  = await response.json();
+      alert(data.message);
+  
+       
+      }
+     }
   
     return (
       <>
-         {items.map((item, index) => (
+         
+
+         {items.map((item) => (
        
-       <Card key={index}   name={item.name} date={""} isSubscribed={true} />
+       <Card  name={item.name} date={""} isSubscribed={true} onClick={()=>handleClick(item._id)} />
      ))}
+
+        {items.length>0?"": <div> hello</div>}
       </>
     );
 }

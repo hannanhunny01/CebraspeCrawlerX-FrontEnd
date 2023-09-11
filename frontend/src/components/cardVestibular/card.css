@@ -47,7 +47,7 @@
   display: none;
 }
 .button-card-green:hover:before {
-  content: "Cancelar Inscrição";
+  content: "Cancelar";
 }
 .button-card-green:hover {
   background-color: #fa3c07; 
