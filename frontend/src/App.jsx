@@ -1,14 +1,7 @@
 import React, { useContext } from "react";
 import Navbar from "./components/Navbar/navbar";
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import "./App.css"
-
-
-import Home from "./pages/home/home";
-import LoginPage from "./pages/login/login";
-import SignUpPage from "./pages/signup/signup";
-import RegisterCoursePage from "./pages/RegisterCourse/registercourse";
-import MyCoursePage from "./pages/myCourse/myCourse";
+import MyRoutes from "./routes/routes";
 import { UserContext } from "./Context/userContext";
 
 const About = () => {
@@ -52,29 +45,7 @@ const App = () => {
   const token = useContext(UserContext)
   return (
     <div className="app">
-    <BrowserRouter>
-    <Routes>
-       <Route exact path="/contact" element={<Home />} />
-
-       <Route exact path="/" element={<Home />} />
-
-      
-
-      <Route path="/about" element={<About />} />
-      
-      <Route path="/service" element={<Service />} />
-     
-      
-
-      <Route path="/contact" element={<Contact />} />
-
-      <Route path="/login" element={<LoginPage />} />
-      <Route exact path="/signup" element={<SignUpPage />} />
-
-      <Route path="/items" element={<RegisterCoursePage />} />
-      <Route path="/myitems" element={<MyCoursePage />} />
-    </Routes>
-    </BrowserRouter>
+    <MyRoutes/>
     </div>
   );
 };

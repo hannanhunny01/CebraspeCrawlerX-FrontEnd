@@ -1,0 +1,17 @@
+
+
+.main-body-userprofile{
+
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    justify-content: center;
+
+}
+.main-body-firstColumn{
+    max-width: 30%;
+}
+.main-body-secondColumn{
+   width: 30%;
+
+}
