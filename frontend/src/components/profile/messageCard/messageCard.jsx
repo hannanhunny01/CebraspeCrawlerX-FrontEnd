@@ -1,9 +1,12 @@
 
 import './messageCard.css'
-
+import ToggleSwitch from '../../button/toggleSwitch/switch'
+import { useState } from 'react'
+import CountdownTimer from '../../countDownTimer/countDown';
 function MessageCard(){
 
-
+    const [editNumber,setEditNumber] = useState(false);
+    const [sendCode ,setSendCode] = useState(true);
     return(
         <div className="messageCard">
         
@@ -12,39 +15,60 @@ function MessageCard(){
           <header>Meu Contatos</header>
   
           <div>
-            <label htmlFor="zapholder"> Whatsapp</label>
-            <input
-              className="zapholder"
-              type="text"
-              placeholder="Enter your name"
-              disabled
-              value={"Abdul Hannan"}
-  
-            />
+            <h3> Whatsapp</h3>
+            <div  className='whastsapp-container'style={{display:"flex",flexDirection:"row"}} >
+              <div className='whastsapp-container-input' style={{display:"flex", flexDirection:"column"}}>
+                 
+                 <label htmlFor="label-numero"> contato</label>
+                 <input type="text"  className='label-numero'/>
+              </div>
+
+              <div className='whastsapp-container-verified' style={{display:"flex",flexDirection:"column"}} >
+
+                <label htmlFor="notifications-button"  >Notificacoes</label> 
+                 <div style={{textAlign:"center"}}>  <ToggleSwitch /> </div>
+                
+              </div>
+
+              <div>
+
+              <label htmlFor="edit-button"  > Editar</label> 
+              <button className='edit-button' onClick={()=>setEditNumber(!editNumber)}>Editar</button>
+
+              </div>
+              
+
+            </div>
           </div>
-  
+          {editNumber && (
+          <div className="send-code-container">
+          <input type="text" placeholder='(61) 98625-0932' className="edit-number" />
+           <button className="send-code-button" onClick={() => setSendCode(!sendCode)}>
+              Send Code
+         </button>
+         </div>
+)}
+
+          {sendCode && 
+          
           <div>
-            <label htmlFor="telholder">Telegram</label>
-            <input
-              className="telholder"
-              type="text"
-              placeholder="Enter your Whatsapp number"
-              disabled
-              value={"(61)98625-0932"}
-  
-            />
+            <span>Foi eviada um Codigo no seu whatsapp</span> <br />
+            <div style={{display:"flex", justifyContent:"space-evenly" }}>
+            <input type="text"   style={{width:"30%"}}/>
+            
+            <div><span>tempo Restante</span> <CountdownTimer/></div>
+
+            </div>
           </div>
+       
+          }
+
+
+
   
-          <div>
-            <label htmlFor="emailholder">Email</label>
-            <input
-              className="emailholder"
-              type="text"
-              placeholder="Enter your email"
-              value={"Hannanhoney5000@gmail.com"}
-              disabled
-            />
-          </div>
+  
+  
+      
   
       
         </div>
