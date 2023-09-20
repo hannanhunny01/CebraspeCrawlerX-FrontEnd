@@ -10,8 +10,10 @@
 }
 .main-body-firstColumn{
     max-width: 30%;
+    height: 90%;
 }
 .main-body-secondColumn{
    width: 30%;
+   height: 90%;
 
 }

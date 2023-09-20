@@ -3,6 +3,7 @@ import Navbar from "../../components/navbarUser/navbarUser";
 
 import ProfileCard from "../../components/profile/profileCard/profileCard";
 import MessageCard from "../../components/profile/messageCard/messageCard";
+import PasswordCard from "../../components/profile/password/password";
 import './profile.css'
 function Profile(){
 
@@ -19,7 +20,10 @@ return(
 
     <div className="main-body-firstColumn">  <ProfileCard/>   </div> 
 
-       <div  className="main-body-secondColumn">    <MessageCard/> </div>
+       <div  className="main-body-secondColumn">    <MessageCard/> 
+       
+       <PasswordCard/>
+       </div>
    
     </div>
 
