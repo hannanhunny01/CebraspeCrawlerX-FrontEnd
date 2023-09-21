@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './profileCard.css'; // Import your CSS file here
 import { useState } from 'react';
 import profileImage from '../../../assets/profile.jpg';
 import newProfileImage from '../../../assets/newProfile.jpg';
+import { ItemContext } from '../../../Context/itemContext';
 function ProfileCard() {
 
     const [isHovered, setIsHovered] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
+    const {userName,items} = useContext(ItemContext)
+    console.log(items,"dasdsa")
   
     const handleImageClick = () => {
       setIsClicked(!isClicked);
@@ -37,7 +40,7 @@ function ProfileCard() {
             type="text"
             placeholder="Enter your name"
             disabled
-            value={"Abdul Hannan"}
+            value={userName}
 
           />
         </div>
@@ -49,7 +52,7 @@ function ProfileCard() {
             type="text"
             placeholder="Enter your Whatsapp number"
             disabled
-            value={"(61)98625-0932"}
+            value={items[1].name}
 
           />
         </div>
@@ -60,7 +63,7 @@ function ProfileCard() {
             className="emailholder"
             type="text"
             placeholder="Enter your email"
-            value={"Hannanhoney5000@gmail.com"}
+            value={items[2].name}
             disabled
           />
         </div>
@@ -72,7 +75,7 @@ function ProfileCard() {
             type="text"
             placeholder="Enter your Telegram username"
             disabled
-            value={"Hannanhunny01"}
+            value={items[0].name}
 
           />
         </div>

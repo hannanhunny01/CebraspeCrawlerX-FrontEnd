@@ -4,71 +4,88 @@ import './items.css';
 import ToggleSwitch from '../../button/toggleSwitch/switch';
 import CountdownTimer from '../../countDownTimer/countDown';
 import { UserContext } from '../../../Context/userContext'; 
+import { ItemContext } from '../../../Context/itemContext';
 function Items(){
 
     const [token] = useContext(UserContext);
-    const [items, setItems] = useState([]);
-
   
-    const [edit,setEdit] = useState([]);
+    const [edit,setEdit] = useState( Array(3).fill(false));
     const editFuc = (index)=>{
       const updateEdit =[...edit];
       updateEdit[index] = !updateEdit[index];
       setEdit(updateEdit);
+      if(updateEdit[index]===false){
+        const updateSendCode = [...sendCode]
+        updateSendCode[index]= false
+        setSendCode(updateSendCode);
+      }
 
     }
-    const [sendCode,setSendCode]= useState([]);
+    const [sendCode,setSendCode]= useState( Array(3).fill(false));
     const sendCodeFuc = (index)=>{
          if(edit[index]){
             const updateSendCode = [...sendCode];
-            if(update)
+            
             updateSendCode[index] =!updateSendCode[index]
             setSendCode(updateSendCode); 
          }
     }
 
+    const [newContact, setNewContact] = useState(["", "", ""]);
 
+    const newContactFunc = (index, event) => {
+      const copy = [...newContact];
+      copy[index] = event.target.value;
+      setNewContact(copy);
+    };
 
+    const registerProfile = async (item,index)=>{
+      let contactMethod ;
+      if(item==="Whatsapp"){
+        contactMethod= "phone"
+      }else{
+        contactMethod = item.toLowerCase();
+      }
 
-    
-    useEffect(  ()=>{
-        const fetchData = async ()=>{
-            const requestOptions ={
-                method :"GET" ,
-                headers:{
-                    "Content-Type": "application/json",
-                    Authorization:`Bearer ${token}`}       
-            }
-            const response =  await fetch("http://localhost:3000/api/profile/sendUserProfile",requestOptions)
-    
-            if (response.ok){
-                const data = await response.json()
-                setItems(data)
-                
-            }else{
-                const data = await response.json()
-                alert(data.message)
-            }
-    
-               
-            }
-        fetchData()
+      const requestOptions={
+        method:"POST",
+        headers:{
+          Authorization:`Bearer ${token}`,
+          "Content-type":"application/json"
+        },
+        body: JSON.stringify({
 
-    },[])
+          contactMethod: contactMethod,
+          contactValue:newContact[index]
+           
 
-    const [newInput,setNewInput] = useState(new Array(3).fill("hello"))
-    console.log(newInput)
-    async function verify(){
-      
-   return "hello";
+        })
+      }
+
+      const response = await fetch("http://localhost:3000/api/profile/sendCode",requestOptions)
+      const data = await response.json()
+
+      if (response.ok){
+        alert(data)
+        sendCodeFuc(index)
+      }else{
+        alert(data.message)
+      }
+          
     }
+
+
+
+
+
+  const {userName,items} = useContext(ItemContext)
 
     
 
     return(
 
-      
-         <div>
+        
+         <div> 
               { items.map((item ,index)=>(
            <div key={index}>
             <h3  className='title-whatsapp-container'> {item.name}</h3>
@@ -99,8 +116,8 @@ function Items(){
             </div>
             {edit[index] && (
             <div className="send-code-container">
-            <input type="text" placeholder='(61) 98625-0932' className="edit-number" />
-             <button className="send-code-button" onClick={() => sendCodeFuc(index)}>
+            <input type="text" placeholder='(61) 98625-0932' className="edit-number"  onChange={(event)=>newContactFunc(index,event)} value={newContact[index]}/>
+             <button className="send-code-button" onClick={()=>registerProfile(item.name,index)}>
                 Send Code
            </button>
            </div>)}

@@ -5,6 +5,8 @@ import SignUpPage from '../pages/signup/signup'
 import RegisterCoursePage from '../pages/RegisterCourse/registercourse'
 import MyCoursePage from '../pages/myCourse/myCourse'
 import Profile from '../pages/profile/profile'
+import { ItemProvidor } from '../Context/itemContext'
+ 
 function MyRoutes(){
 
 
@@ -24,7 +26,7 @@ function MyRoutes(){
     
           <Route path="/items" element={<RegisterCoursePage />} />
           <Route path="/myitems" element={<MyCoursePage />} />
-          <Route path="/profile" element={<Profile />} />
+         <Route path="/profile" element={ <Profile />} />
 
         </Routes>
         </BrowserRouter>
