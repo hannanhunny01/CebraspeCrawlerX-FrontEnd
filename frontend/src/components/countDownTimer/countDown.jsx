@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-const CountdownTimer = () => {
+const CountdownTimer = ({ timerName }) => {
   const initialTime = 10 * 60; // 10 minutes in seconds
   const [timeRemaining, setTimeRemaining] = useState(initialTime);
 
   useEffect(() => {
-    const storedInitialTime = parseInt(localStorage.getItem('initialTime'));
-    const storedStartTime = parseInt(localStorage.getItem('startTime'));
+    const storedInitialTime = parseInt(localStorage.getItem(`${timerName}_initialTime`));
+    const storedStartTime = parseInt(localStorage.getItem(`${timerName}_startTime`));
 
     if (storedInitialTime && storedStartTime) {
       const currentTime = Math.floor(Date.now() / 1000);
@@ -17,15 +17,15 @@ const CountdownTimer = () => {
         setTimeRemaining(remainingTime);
       } else {
         // Timer has expired, reset to initial time
-        localStorage.setItem('initialTime', initialTime.toString());
-        localStorage.setItem('startTime', currentTime.toString());
+        localStorage.setItem(`${timerName}_initialTime`, initialTime.toString());
+        localStorage.setItem(`${timerName}_startTime`, currentTime.toString());
         setTimeRemaining(initialTime);
       }
     } else {
       // Initial setup
       const currentTime = Math.floor(Date.now() / 1000);
-      localStorage.setItem('initialTime', initialTime.toString());
-      localStorage.setItem('startTime', currentTime.toString());
+      localStorage.setItem(`${timerName}_initialTime`, initialTime.toString());
+      localStorage.setItem(`${timerName}_startTime`, currentTime.toString());
     }
 
     const timerInterval = 1000;
@@ -40,7 +40,7 @@ const CountdownTimer = () => {
     return () => {
       clearInterval(timerId);
     };
-  }, [timeRemaining]);
+  }, [timerName, timeRemaining]);
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);

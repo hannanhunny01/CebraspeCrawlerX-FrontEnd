@@ -5,7 +5,6 @@ import SignUpPage from '../pages/signup/signup'
 import RegisterCoursePage from '../pages/RegisterCourse/registercourse'
 import MyCoursePage from '../pages/myCourse/myCourse'
 import Profile from '../pages/profile/profile'
-import { ItemProvidor } from '../Context/itemContext'
  
 function MyRoutes(){
 

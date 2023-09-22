@@ -5,12 +5,12 @@ import ProfileCard from "../../components/profile/profileCard/profileCard";
 import MessageCard from "../../components/profile/messageCard/messageCard";
 import PasswordCard from "../../components/profile/password/password";
 import './profile.css'
-import { ItemProvidor } from "../../Context/itemContext";
+import { ItemProvider } from "../../Context/itemContext";
 function Profile(){
 
 
 return(
-   
+    <ItemProvider>
     <div>
     <div >
         <Navbar/>       
@@ -19,10 +19,10 @@ return(
 
    
     <div className="main-body-userprofile">
-    <div className="main-body-firstColumn">    <ProfileCard/>   </div> 
+    <div className="main-body-firstColumn">  <ProfileCard/>     </div> 
 
 
-       <div  className="main-body-secondColumn">     <MessageCard/> 
+       <div  className="main-body-secondColumn">    <MessageCard/> 
        <PasswordCard/>
        </div>
    
@@ -31,6 +31,7 @@ return(
        
 
     </div>
+    </ItemProvider>
 );
 
 

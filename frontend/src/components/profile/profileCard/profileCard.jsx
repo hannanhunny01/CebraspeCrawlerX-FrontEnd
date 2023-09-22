@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './profileCard.css'; // Import your CSS file here
 import { useState } from 'react';
 import profileImage from '../../../assets/profile.jpg';
@@ -8,7 +8,14 @@ function ProfileCard() {
 
     const [isHovered, setIsHovered] = useState(false);
     const [isClicked, setIsClicked] = useState(false);
-    const {userName,items} = useContext(ItemContext)
+    const {userName,items,isLoading} = useContext(ItemContext)
+
+    if(isLoading){
+      return(
+        <div>....Loading</div>
+      )
+    }
+
     console.log(items,"dasdsa")
   
     const handleImageClick = () => {
@@ -52,7 +59,7 @@ function ProfileCard() {
             type="text"
             placeholder="Enter your Whatsapp number"
             disabled
-            value={items[1].name}
+            value={items[1].value}
 
           />
         </div>
@@ -63,7 +70,7 @@ function ProfileCard() {
             className="emailholder"
             type="text"
             placeholder="Enter your email"
-            value={items[2].name}
+            value={items[2].value}
             disabled
           />
         </div>
@@ -75,7 +82,7 @@ function ProfileCard() {
             type="text"
             placeholder="Enter your Telegram username"
             disabled
-            value={items[0].name}
+            value={items[0].value}
 
           />
         </div>
