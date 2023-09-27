@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import CountdownTimer from '../../countDownTimer/countDown';
 const ThirdSection = ({phone ,code ,setCode ,timer ,setTimer }) => {
-  const formattedPhone = `(${phone.slice(0, 2)}) ${phone.slice(2, 3)} ${phone.slice(3, 7)}-${phone.slice(7)}`;
   
   return (
     <div className="register-third-section">
        <div className="form-group">
-            <span>Foi Enviado Codigo no Whatapp no Seguinte numero </span> <br/>
-            <span style={{'textAlign':'center'}}> {formattedPhone} </span> <br/>
-            {timer && <span style={{"display":"flex"}}>Tempo Restante :   <CountdownTimer/> </span>}
+            <span>Foi Enviado Codigo de 6 digitos no Seguinte Email :- </span> <br/>
+            
+          <div style={{'textAlign':'center' ,fontWeight:'600'}}>  <span > {phone} </span> <br/></div>
+            {timer && <span style={{"display":"flex"}}>Tempo Restante :   <CountdownTimer timerName={"registerAccount"}/> </span>}
 
           </div>
 

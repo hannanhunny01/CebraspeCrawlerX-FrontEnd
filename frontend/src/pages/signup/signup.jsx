@@ -5,10 +5,16 @@ import FirstSection from '../../components/register/registerFirst/firstSection';
 import SecondSection from '../../components/register/registerSecond/secondSection';
 import ThirdSection from '../../components/register/registerthird/thirdSection';
 import { useNavigate } from 'react-router-dom';
+
+
+import {isValidNumber,isValidEmail,isPasswordValid }from '../../components/Validators/validators';
+
+import Modal from '../../components/modal/modal'
+
 const SignUpPage = () => {
   const [name ,setName] = useState('');
   const [email ,setEmail] = useState('');
-  const [phone ,setPhone] = useState("");
+  const [confirmEmail ,setConfirmEmail] = useState("");
   const [password,setPassword] = useState('');
   const [rePassword,setRePassword] = useState('');
   const navigate = useNavigate();
@@ -16,10 +22,20 @@ const SignUpPage = () => {
   const [timer,setTimer] = useState(false);
   const [sendFirstTime , setSendFirstTime] = useState(true)
 
+  const [message ,setMessage] = useState("")
+  const [isError,setIsError] = useState(false)
+  
+  const [isErrorPassword,setIsErrorPassword] =useState(false);
+  const [messagePassword ,setMessagePassword] = useState("");
 
-  const components =[<FirstSection name={name} email={email} phone={phone} setEmail={setEmail} setName={setName} setPhone={setPhone} />,
-                     <SecondSection password={password} setPassword={setPassword} rePassword={rePassword} setRePassword={setRePassword}/>,
-                     <ThirdSection phone={phone} code={code} setCode={setCode} timer={timer} setTimer={setTimer} />]
+  //modal part
+  const [ openModal,setOpenModal] = useState(false);
+  const [codeMessage,setCodeMessage] = useState("")
+
+
+  const components =[<FirstSection name={name} email={email} phone={confirmEmail} setEmail={setEmail} setName={setName} setPhone={setConfirmEmail}  message={message}  isError={isError} setIsError={setIsError} />,
+                     <SecondSection password={password} setPassword={setPassword} rePassword={rePassword} setRePassword={setRePassword} isErrorPassword={isErrorPassword} message={messagePassword}/>,
+                     <ThirdSection phone={email} code={code} setCode={setCode} timer={timer} setTimer={setTimer} />]
   const [currPage,setCurrPage] = useState(0);
 
   const checkEmail = async function(){   
@@ -29,9 +45,7 @@ const SignUpPage = () => {
           "Content-Type": "application/json",
         },
         body:JSON.stringify({
-          email: email,
-          phone: phone
-        })
+          email: email        })
       };
 
       try {
@@ -40,10 +54,12 @@ const SignUpPage = () => {
         if (response.ok) {
 
           setCurrPage(currPage+1)
+          setIsError(false)
           
         }else{
           const data = await response.json()
-          alert(data.message);
+          setIsError(true)
+          setMessage(data.message);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -51,17 +67,23 @@ const SignUpPage = () => {
 
     const checkPassword = ()=>{
       try{
+        if(isPasswordValid(password)){
         if (password == rePassword){
-         
+          setIsErrorPassword(false);
+
           setCurrPage(currPage+1);
 
     
               sendCode();
            
                    
-          console.log("hhello")
         }else{
-          alert("password not same")
+          setIsErrorPassword(true);
+          setMessagePassword("Senha e confirmar Senha deveria ser igual")
+        }}else{
+          setIsErrorPassword(true);
+          setMessagePassword("Senha deveria ter no minimo 8 digitos")
+
         }
 
 
@@ -79,15 +101,18 @@ const SignUpPage = () => {
             "Content-Type": "application/json",
           },
           body:JSON.stringify({
-            phone: phone
+            contactMethod:"email",
+            contactValue: email
           })
         };
   
         try {
           const response = await fetch("http://localhost:3000/api/user/sendCode", requestOptions);
-          console.log(response.body.message);
-          if (response.ok) {alert("code Created SucessFully")}
-           setTimer(true)    
+          const data = await response.json();
+          setCodeMessage(data.message);
+          setOpenModal(true);
+
+         
         }
           catch(error){
             console.log(error)
@@ -132,7 +157,7 @@ const SignUpPage = () => {
      <Navbar/>
      <div className='signup-container'>
      <div className='signup-card'>
-     <h2>Registrar</h2>
+     <h2>Registration</h2>
          
          {components[currPage]}
 
@@ -143,9 +168,31 @@ const SignUpPage = () => {
           </button> :false}
           <button className="login-button" onClick={()=>{
             if (currPage ==0){
-              checkEmail()
+
+              if (email === confirmEmail ){
+
+                if (isValidEmail(email)){
+                  checkEmail()
+                 }else{
+                  setIsError(true)
+                  setMessage("PorFavor Digite email valido")
+
+    
+                 }
+
+              }else{
+                setIsError(true)
+
+                setMessage("Email e Confirmar Email nao sao igauais")
+              }
+
+           
+
+
+              
             }
             if (currPage ==1){
+             
                checkPassword()
             }
             if(currPage==2){
@@ -155,6 +202,11 @@ const SignUpPage = () => {
             }} >
             {currPage<=1?"Next":"confirm"}
           </button>
+          {openModal && <Modal open={openModal} onClose={()=>setOpenModal(!openModal)}>
+              <div>
+                <h3>{codeMessage}</h3>
+              </div>
+            </Modal  >}
           
           </div>
 

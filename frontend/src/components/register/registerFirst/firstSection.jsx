@@ -1,7 +1,8 @@
 import React from 'react';
 import facebook from "../../../assets/icons/facebookicon.png"
 import google from "../../../assets/icons/googleicon.png"
-const FirstSection = ({ name, email, phone, setName, setEmail, setPhone }) => {
+const FirstSection = ({ name, email, phone, setName, setEmail, setPhone  ,isError , setIsError,message}) => {
+  console.log(isError,message)
   return (
     <div className="register-first-section">
       <div className="form-group">
@@ -10,7 +11,7 @@ const FirstSection = ({ name, email, phone, setName, setEmail, setPhone }) => {
             </label>
             <input
               className="input-field"
-              placeholder="Enter your Name"
+              placeholder="Escrever Seu Nome"
               type="name"
               id="name-register"
               value={name}
@@ -24,7 +25,7 @@ const FirstSection = ({ name, email, phone, setName, setEmail, setPhone }) => {
             </label>
             <input
               className="input-field"
-              placeholder="Enter your email"
+              placeholder="Email"
               type="email"
               id="email-register"
               value={email}
@@ -34,18 +35,28 @@ const FirstSection = ({ name, email, phone, setName, setEmail, setPhone }) => {
 
           <div className="form-group">
             <label className="label" htmlFor="phone-register">
-              Phone(whatsapp)
+            Confirmar e-mail 
             </label>
             <input
               className="input-field"
-              placeholder="Enter your email"
+              placeholder="Confirmar e-mail"
               type="email"
               id="phone-register"
               value={phone}
               onChange={(e)=>setPhone(e.target.value)}
             />
           </div>
+          {isError &&  
+
+          <div  style={{color:"red" ,textAlign:"center"}}>
+            <span>{message}</span>
+          </div>
+}
+
+
+
           <div style={{'textAlign':'center','fontSize':'15px'}} >Ou Cadastrar usando</div>
+
           <div className="signup-icon-container">
             <img
               className="login-icon"
@@ -55,11 +66,7 @@ const FirstSection = ({ name, email, phone, setName, setEmail, setPhone }) => {
                 console.log('hello')
               }}
             />
-            <img
-              className="login-icon"
-              src={facebook}
-              alt="Facebook Icon"
-            />
+     
           </div>
     </div>
   );
