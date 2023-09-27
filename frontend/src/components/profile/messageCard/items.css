@@ -64,3 +64,19 @@
 
     margin-top: 10px;
 }
+
+.telegramModalImage {
+  max-width: 50%; /* Ensure the image fits within the modal */
+  height: auto; /* Maintain the image's aspect ratio */
+  display: block; /* Ensure the image is a block-level element */
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/* Mobile-specific styles using a media query */
+@media screen and (max-width: 768px) {
+  /* Adjust the image size for mobile screens */
+  .telegramModalImage {
+    max-width: 80%; /* Set the image to be 80% of the modal's width */
+  }
+}

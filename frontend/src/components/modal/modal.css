@@ -35,3 +35,25 @@
   .button-modal:hover::after {
     box-shadow: 0 0 10px rgb(119, 28, 28); /* Add red lighting effect on hover */
   }
+
+  /* Add these styles to your existing CSS */
+.modal-container {
+  /* Other styles as before */
+  max-height: 80vh; /* Set a maximum height for the modal */
+  overflow-y: auto; /* Enable vertical scrolling for the modal */
+}
+
+.modal-content {
+  /* Styles for the content */
+  padding: 20px;
+  /* Other styles as needed */
+}
+
+
+  @media screen and (max-width: 768px) {
+    /* Adjust the width of the modal for mobile screens */
+    .modal-container {
+      min-width: 90%; /* Change to your desired width */
+     
+    }
+  }
