@@ -21,7 +21,7 @@ const FirstSection = ({ name, email, phone, setName, setEmail, setPhone  ,isErro
           
           <div className="form-group">
             <label className="label" htmlFor="email-register">
-              Email
+              mail
             </label>
             <input
               className="input-field"
