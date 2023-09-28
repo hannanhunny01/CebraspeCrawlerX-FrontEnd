@@ -45,6 +45,7 @@ function ToggleSwitch({ method, value }) {
       const data = await response.json();
       console.log(data.message);
       alert(data.message);
+      setIsOn(false)
     }
   };
 

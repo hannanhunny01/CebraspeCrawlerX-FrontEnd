@@ -130,7 +130,6 @@ const SignUpPage = () => {
             username:name,
             email:email,
             password:password,
-            phone:phone,
             code:code
           })
         };

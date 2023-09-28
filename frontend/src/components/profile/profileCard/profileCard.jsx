@@ -57,7 +57,7 @@ function ProfileCard() {
           <input
             className="zapholder"
             type="text"
-            placeholder="Enter your Whatsapp number"
+            placeholder="Sem Cadastro"
             disabled
             value={items[1].value}
 
@@ -69,7 +69,7 @@ function ProfileCard() {
           <input
             className="emailholder"
             type="text"
-            placeholder="Enter your email"
+            placeholder="Sem Cadastro"
             value={items[2].value}
             disabled
           />
@@ -80,7 +80,7 @@ function ProfileCard() {
           <input
             className="telholder"
             type="text"
-            placeholder="Enter your Telegram username"
+            placeholder="Sem Cadastro"
             disabled
             value={items[0].value}
 

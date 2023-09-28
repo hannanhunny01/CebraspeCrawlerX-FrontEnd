@@ -1,23 +1,36 @@
 /* navbar.css */
 
 .main-nav {
-    display: flex;
-    justify-content: space-evenly !important;
-    align-items: center;
-    background-color: #55595c;;
-    padding: 7px 0px;
-    height: auto;
-    min-height: 8vh;
-    border-color: #5c997e;
-    
-    width: 100%;
-   
-  }
-  
-  .main-nav-one {
-    flex: 1;
+  display: flex;
+  justify-content: space-evenly !important;
+  align-items: center;
+  padding: 7px 0px;
+  height: auto;
+  min-height: 8vh;
+  border-color: #138a9f;
+  width: 100%;
+  animation: changeColor 25s linear infinite; /* Change colors every 5 seconds */
+}
 
+@keyframes changeColor {
+  0% {
+    background-color: #0d857f;
   }
+  25% {
+    background-color: #0c6a54; 
+  }
+  50% {
+    background-color: rgb(9, 74, 84); 
+  }
+  75% {
+    background-color: #0e8267; 
+  }
+  100% {
+    background-color: #063632;
+  }
+}
+  
+  
   
   .main-nav-one h2 {
     display: inline-block;
@@ -33,9 +46,7 @@
     color: #ffffff;
   }
   
-  .main-nav-two {
-    flex: 2;
-  }
+
   
   .main-nav-two ul {
     list-style: none;
@@ -60,11 +71,7 @@
     color: #ffffff;
   }
   
-  .main-nav-three {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-  }
+ 
   
   .main-nav-three ul {
     list-style: none;

@@ -24,13 +24,31 @@ const Home  = () =>{
         
         <div className="main-home-text">
             <h3 >Sobre Cebraspe Crawler X</h3>
-            <p>Aplicativo web desenvolvido para auxiliar pessoas que estão inscritas em Concurso ou Subprogramas de PAS/UNb </p>
-            <p>é um aplicativo desenvolvido para rastrear todos os concursos e programas vigentes do pas unb no site do cebraspe caso sistema encontre a atualizaçoes sobre programa que usuario está cadastrado ele enviará uma notificaco para o usuário no whatsap</p>
-            <h3>Proposta</h3>
-            <p>muitas pessoas que se inscrevem em concursos e programas do pas/unb perdem datas importantes porque perdem eventos importantes ou data para entregar os documentos e em alguns casos perdem a candidatura e vaga que estavam concorrendo
-então este aplicativo tem por objetivo resolver este problema mantendo os usuários atualizados sobre os eventos atuais acontecendo no concurso que eles estão inscritos também enviando uma mensagem sms no whatsapp</p>
-            <h3>Como Funcionar</h3>
-            <p> o usuário fará uma conta no Sistema e depois poderá selecionar o concurso ou programa PAS/UNB que deseja receber as notificações</p>
+            <p>
+          Aplicativo web desenvolvido para auxiliar pessoas que estão inscritas
+          em Concurso ou Subprogramas de PAS/UNB
+        </p>
+        <p>
+          É um aplicativo desenvolvido para rastrear todos os concursos e
+          programas vigentes do PAS/UNB no site do Cebraspe. Caso o sistema
+          encontre atualizações sobre o programa que o usuário está cadastrado,
+          ele enviará uma notificação para o usuário no Email/Telegram ou WhatsApp.
+        </p>
+        <h3>Proposta</h3>
+        <p>
+          Muitas pessoas que se inscrevem em concursos e programas do PAS/UNB
+          perdem datas importantes porque perdem eventos importantes ou datas
+          para entregar os documentos, e em alguns casos, perdem a candidatura e
+          a vaga que estavam concorrendo. Portanto, este aplicativo tem por
+          objetivo resolver este problema mantendo os usuários atualizados
+          sobre os eventos atuais acontecendo no concurso que eles estão
+          inscritos, também enviando uma mensagem SMS no WhatsApp.
+        </p>
+        <h3>Como Funciona</h3>
+        <p className="homepage-lasttext">
+          O usuário fará uma conta no sistema e depois poderá selecionar o
+          concurso ou programa PAS/UNB que deseja receber as notificações.
+        </p>
 
         </div>
 

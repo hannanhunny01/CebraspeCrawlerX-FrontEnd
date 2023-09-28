@@ -102,7 +102,7 @@ navigate('/items')    }
           <button className="login-button" onClick={postData}>
             Login
           </button>
-          <div className="login-forgotpassword">   <Link to="/"> Esqueceu Senha?</Link></div>
+          <div className="login-forgotpassword">   <Link to="/forgotpassword"> Esqueceu Senha?</Link></div>
            <div style={{'textAlign':'center','fontSize':'15px'}} >Ou Entrar usando</div>
           <div className="login-icon-container">
             <img

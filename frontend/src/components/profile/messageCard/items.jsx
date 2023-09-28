@@ -188,12 +188,12 @@ function Items(){
          <div> 
               { items.map((item ,index)=>(
            <div key={index}>
-            <h3  className='title-whatsapp-container'> {item.name}</h3>
+            <h3  className='title-whatsapp-container'> {item.name?item.name:"Sem Cadastro"}</h3>
             <div  className='whastsapp-container'style={{display:"flex",flexDirection:"row"}} >
               <div className='whastsapp-container-input' style={{display:"flex", flexDirection:"column"}}>
                  
-                 <label htmlFor="label-numero"> contato</label>
-                 <input type="text"  value={item.value} className='label-numero' disabled/>
+                 <label htmlFor="label-numero"> Contato</label>
+                 <input type="text"  value={item.value?item.value:"Sem Cadastro"} className='label-numero' disabled/>
               </div>
 
               <div className='whastsapp-container-verified' style={{display:"flex",flexDirection:"column"}} >
