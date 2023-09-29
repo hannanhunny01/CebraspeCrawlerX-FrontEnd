@@ -3,13 +3,22 @@ import Navbar from "../../components/Navbar/navbar"
 import { useState } from "react"
 import './forgotPassword.css'
 import { isValidEmail } from "../../components/Validators/validators"
+import Modal from "../../components/modal/modal"
+import buttonStyles from "../../components/myItems/styles"
 export default function ForgotPassword (){
 
    const [email,setEmail] = useState("") 
    const [errorMessage,setErrorMessage] = useState(false);
 
+   const [openModal,setOpenModal] = useState(false);
+   const [message,setMessage]=useState("");
+
+   const [disable,setDisable] = useState(false);
+
 
    const resetPassword = async ()=>{
+    setDisable(true)
+    setErrorMessage(false)
 
     const requestOptions ={
 
@@ -24,7 +33,10 @@ export default function ForgotPassword (){
 
     const response = await fetch("http://localhost:3000/api/user/forgotPassword",requestOptions)
     const data = await response.json()
-    alert(data.message)
+
+    setOpenModal(true);
+    setMessage(data.message);
+    setDisable(false);
    }
 
     return (
@@ -56,8 +68,8 @@ export default function ForgotPassword (){
     
 }
          
-            <button className="forgotPassword-button" onClick={()=>{
-
+            <button className="forgotPassword-button"  disabled={disable} onClick={()=>{
+                 
                 if(isValidEmail(email)){
                     setErrorMessage(false)
                     resetPassword()
@@ -68,11 +80,29 @@ export default function ForgotPassword (){
               Manda Codigo
             </button>
 
+            <Modal open={openModal} onClose={()=>setOpenModal(false)}>
+            <div style={{ display:"flex",justifyContent:"center"}}>
+          <div className='div-modal-notifications'>
+          <h2>Mesagem</h2>
+          <br />
+          <p>{message}</p>
+        
+          <div  style={buttonStyles.buttonContainer}> 
+
+              <button onClick={()=>setOpenModal(false)} style={buttonStyles.noButton}>Fechar</button>
+              
+              </div>
+          </div>
+          </div>
+        </Modal>
+
+
            
           
          
           </div>
         </div>
+        
       </div>
     )
 }

@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import {isValidNumber,isValidEmail,isPasswordValid }from '../../components/Validators/validators';
 
 import Modal from '../../components/modal/modal'
+import buttonStyles from '../../components/myItems/styles';
 
 const SignUpPage = () => {
   const [name ,setName] = useState('');
@@ -21,6 +22,8 @@ const SignUpPage = () => {
   const [code,setCode]= useState("");
   const [timer,setTimer] = useState(false);
   const [sendFirstTime , setSendFirstTime] = useState(true)
+
+  const [disable,setDisable] = useState(false);
 
   const [message ,setMessage] = useState("")
   const [isError,setIsError] = useState(false)
@@ -111,6 +114,10 @@ const SignUpPage = () => {
           const data = await response.json();
           setCodeMessage(data.message);
           setOpenModal(true);
+          setTimeout(()=>{setOpenModal(false);},3000)
+
+
+
 
          
         }
@@ -121,6 +128,8 @@ const SignUpPage = () => {
       }
 
       const verifyAndRegister = async ()=>{
+
+        setDisable(true);
         const requestOptions = {
           method: "POST",
           headers: {
@@ -135,16 +144,29 @@ const SignUpPage = () => {
         };
         try {
           const response = await fetch("http://localhost:3000/api/user/register", requestOptions);
-          const message = await response.json()
-          console.log(message);
-          if (response.ok) {alert(message.message )
-            navigate('/login')
+          const data = await response.json()
+          setCodeMessage(data.message)
+          setOpenModal(true);
+          setTimeout(()=>{setOpenModal(false)},3000)
+
+
+          if (response.ok) {
+            setTimeout(()=>{  navigate('/login')},3000)
+
+            
           
-          }else{alert(message.message)}}
+          
+          }
+        }
           
           catch(error){
             console.log(error)
           }
+
+
+         setTimeout(()=>{setDisable(false);},3000) 
+
+          
 
         
       }
@@ -165,7 +187,7 @@ const SignUpPage = () => {
     {  currPage>0?<button className="login-button" onClick={()=>{setCurrPage(currPage-1)}}>
             Voltar
           </button> :false}
-          <button className="login-button" onClick={()=>{
+          <button className="login-button"  disabled={ disable} onClick={()=>{
             if (currPage ==0){
 
               if (email === confirmEmail ){
@@ -201,11 +223,22 @@ const SignUpPage = () => {
             }} >
             {currPage<=1?"Next":"confirm"}
           </button>
-          {openModal && <Modal open={openModal} onClose={()=>setOpenModal(!openModal)}>
-              <div>
-                <h3>{codeMessage}</h3>
+         
+          <Modal open={openModal} onClose={()=>setOpenModal(false)}>
+            <div style={{ display:"flex",justifyContent:"center"}}>
+          <div className='div-modal-notifications'>
+          <h2>Mesagem</h2>
+          <br />
+          <p>{codeMessage}</p>
+        
+          <div  style={buttonStyles.buttonContainer}> 
+
+              <button onClick={()=>setOpenModal(false)} style={buttonStyles.noButton}>Fechar</button>
+              
               </div>
-            </Modal  >}
+          </div>
+          </div>
+        </Modal>
           
           </div>
 

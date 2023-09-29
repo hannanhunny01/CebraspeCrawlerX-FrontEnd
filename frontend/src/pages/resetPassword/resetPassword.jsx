@@ -3,6 +3,9 @@ import Navbar from "../../components/Navbar/navbar"
 import { useState } from "react"
 import './resetPassword.css'
 import { isPasswordValid } from "../../components/Validators/validators"
+
+import Modal from "../../components/modal/modal"
+import buttonStyles from "../../components/myItems/styles"
 export default function ResetPassword (){
 
    const [password,setPassword] = useState(""); 
@@ -11,8 +14,16 @@ export default function ResetPassword (){
    const [message,setMessage] = useState('');
    const {id} = useParams();
    const navigate = useNavigate();
+
+   const[messageServer,setMessageServer] = useState('')
+
+
+   const [openModal,setOpenModal] =useState(false);
+
+   const [disable,setDisable] = useState(false)
  
    const resetPassword = async ()=>{
+    setDisable(true);
 
     const requestOptions ={
 
@@ -27,13 +38,18 @@ export default function ResetPassword (){
 
     const response = await fetch(`http://localhost:3000/api/user/resetPassword/${id}`,requestOptions)
     const data = await response.json()
+    setOpenModal(true)
+    setMessageServer(data.message)
+
 
     if (response.ok){
-        alert(data.message)
+      setTimeout(()=>{
+        setOpenModal(false)
         navigate('/login')
-    }else{
-        alert(data.message)
+
+      },3000)
     }
+    setDisable(false)
    
    }
 
@@ -79,7 +95,7 @@ export default function ResetPassword (){
     
 }
          
-            <button className="resetPassword-button" onClick={()=>{
+            <button className="resetPassword-button"  disabled={disable} onClick={()=>{
 
                 if(isPasswordValid(password)){
                     if(password === confirmPassword){
@@ -101,6 +117,22 @@ export default function ResetPassword (){
               Manda Codigo
             </button>
 
+
+    <Modal open={openModal} onClose={()=>setOpenModal(false)}>
+            <div style={{ display:"flex",justifyContent:"center"}}>
+          <div className='div-modal-notifications'>
+          <h2>Mesagem</h2>
+          <br />
+          <p>{messageServer}</p>
+        
+          <div  style={buttonStyles.buttonContainer}> 
+
+              <button onClick={()=>setOpenModal(false)} style={buttonStyles.noButton}>Fechar</button>
+              
+              </div>
+          </div>
+          </div>
+        </Modal>
            
           
          

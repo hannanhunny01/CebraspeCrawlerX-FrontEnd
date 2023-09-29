@@ -82,3 +82,49 @@ h2 {
   display: flex;
   justify-content: center;
 }
+
+
+
+
+
+
+.div-modal-notifications {
+  background-color: #ffffff; /* Background color for the modal */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for a subtle effect */
+  text-align: center;
+  width: 600px;
+}
+
+.div-modal-notifications h2 {
+  font-size: 1.5rem; /* Font size for the heading */
+  margin-bottom: 10px; /* Spacing below the heading */
+  font-family: "Lucida Console", "Courier New", monospace;
+
+}
+
+.div-modal-notifications p {
+  font-size: 20px; /* Font size for the paragraph */
+  margin-bottom: 20px; /* Spacing below the paragraph */
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.div-modal-notifications div {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+}
+
+.div-modal-notifications button {
+  background-color: #cccccc; /* Button background color */
+  color: #ffffff; /* Button text color */
+  border: none;
+  padding: 10px 20px;
+  /* Add more button styles as needed */
+}
+
+@media (max-width: 768px) {
+  .div-modal-notifications {
+    width: 90%;
+    }
+}

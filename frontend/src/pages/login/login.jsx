@@ -7,14 +7,26 @@ import axios from 'axios';
 import { UserContext } from "../../Context/userContext";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
+import { isValidEmail,isPasswordValid } from "../../components/Validators/validators";
+import Modal from "../../components/modal/modal";
+import buttonStyles from "../../components/myItems/styles";
 
 const LoginPage = () => {
   //
   const [token, setToken] = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [errorMessage, setErrorMessage] = useState("");
+  const [isError,setIsError] = useState(false);
+
+
+  const [openModal,setOpenModal]= useState(false);
+  const [message,setMessage]= useState("");
+  const [disable,setDisable] = useState(false);
   const navigate = useNavigate()
+
+
 
 
   useEffect(() => {
@@ -24,6 +36,7 @@ navigate('/items')    }
 
    
  const postData = async ()=>{
+  setDisable(true)
 
   const requestOptions = {
     method: "POST",
@@ -40,17 +53,25 @@ navigate('/items')    }
     
     const response = await fetch("http://localhost:3000/api/user/login", requestOptions);
     const data = await response.json()
+    setOpenModal(true);
+    setMessage(data.message)
+   
 
     if (response.ok){
-      setToken(data.token);
-      alert("Login SucessFul");
-      navigate('/items')
+      setTimeout(()=>{
+        setOpenModal(false);
+        setToken(data.token);
+        navigate('/items')
+      },3000)
 
-    }else if(response.status === 401){
-      alert(data.message);
-    }else{
-      alert("Error")
+     
+     
+     
+
     }
+    setTimeout(()=>{ setDisable(false)
+    },3000)
+
 
    }
    catch(error){
@@ -99,7 +120,38 @@ navigate('/items')    }
               onChange={(e)=>{setPassword(e.target.value)}}
             />
           </div>
-          <button className="login-button" onClick={postData}>
+          {isError &&  
+
+              <div  style={{color:"red" ,textAlign:"center"}}>
+           <span>{errorMessage}</span>
+            </div>
+}
+
+          <button className="login-button"  disabled={disable} onClick={
+            ()=>{
+
+              if(isValidEmail(email)){
+                if(isPasswordValid(password)){
+
+                 setIsError(false)
+                  postData();
+
+                }else{
+                  setIsError(true);
+                  setErrorMessage("Senha deve ter no minimo 8 digitos")
+
+
+
+                }
+              }else{
+                setIsError(true);
+                  setErrorMessage("Esse Email nao esta valido")
+
+
+              }
+              }
+              
+              }>
             Login
           </button>
           <div className="login-forgotpassword">   <Link to="/forgotpassword"> Esqueceu Senha?</Link></div>
@@ -122,6 +174,22 @@ navigate('/items')    }
           <div className="login-signup" style={{'textAlign':'center' ,'fontSize':'15px' ,'color':'black'}}> <Link to='/signup'>Ou Registrar</Link></div>
         </div>
       </div>
+       
+      <Modal open={openModal} onClose={()=>setOpenModal(false)}>
+            <div style={{ display:"flex",justifyContent:"center"}}>
+          <div className='div-modal-notifications'>
+          <h2>Mesagem</h2>
+          <br />
+          <p>{message}</p>
+        
+          <div  style={buttonStyles.buttonContainer}> 
+
+              <button onClick={()=>setOpenModal(false)} style={buttonStyles.noButton}>Fechar</button>
+              
+              </div>
+          </div>
+          </div>
+        </Modal>
     </div>
   );
 };
