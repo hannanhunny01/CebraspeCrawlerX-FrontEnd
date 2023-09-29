@@ -3,17 +3,57 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #55595c;
   padding: 7px 0px;
   height: auto;
   min-height: 8vh;
   width: 100vw !important; 
+  animation: changeColor 25s linear infinite; /* Change colors every 5 seconds */
 
+}
+
+@keyframes changeColor {
+  0% {
+    background-color: #0d857f;
+  }
+  25% {
+    background-color: #0c6a54; 
+  }
+  50% {
+    background-color: rgb(9, 74, 84); 
+  }
+  75% {
+    background-color: #0e8267; 
+  }
+  100% {
+    background-color: #063632;
+  }
 }
 
 
 .navbar-logo h2 {
   margin-bottom: 0; 
+  font-family: "Lucida Console", "Courier New", monospace;
+  animation: title 25s linear infinite;
+
+
+}
+
+@keyframes title {
+  0% {
+    color: #051637;
+  }
+  25% {
+    color: #0fa365; 
+  }
+  50% {
+    color: rgb(13, 121, 138); 
+  }
+  75% {
+    color: #0e8267; 
+  }
+  100% {
+    color: #0dada0;
+  }
 }
 .navbar-menu ul {
   list-style: none;

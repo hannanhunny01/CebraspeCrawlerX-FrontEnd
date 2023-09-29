@@ -26,6 +26,12 @@ export   function isValidEmail(email) {
     return emailRegex.test(email);
   }
   
-export function isPasswordValid(password) {
-  return password.length >= 8;
-}
+  export function isPasswordValid(password) {
+    if (password.length < 8) {
+      return false;
+    }
+  
+    const legalCharactersPattern = /^[a-zA-Z0-9!@#$%^&*()-_=+{}[]|;:'",.<>?]*$/;
+  
+    return legalCharactersPattern.test(password);
+  }

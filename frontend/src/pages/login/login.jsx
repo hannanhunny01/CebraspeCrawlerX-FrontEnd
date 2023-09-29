@@ -62,7 +62,7 @@ navigate('/items')    }
         setOpenModal(false);
         setToken(data.token);
         navigate('/items')
-      },3000)
+      },2000)
 
      
      

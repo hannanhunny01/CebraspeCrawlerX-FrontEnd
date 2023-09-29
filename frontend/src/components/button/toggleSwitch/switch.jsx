@@ -2,7 +2,15 @@ import React, { useContext, useState } from 'react';
 import './switch.css';
 import { UserContext } from '../../../Context/userContext';
 
+import Modal from '../../modal/modal';
+import buttonStyles from '../../myItems/styles';
+
+
 function ToggleSwitch({ method, value }) {
+
+  const [message,setMessage] = useState('');
+  const [openModal,setOpenModal] = useState(false);
+
 
   const checkValue =()=>{
     if(value===null){
@@ -36,17 +44,13 @@ function ToggleSwitch({ method, value }) {
       }),
     };
     const response = await fetch("http://localhost:3000/api/profile/updateNotifications", requestOptions);
+    const data = await response.json();
+    setOpenModal(true);
+    setMessage(data.message)
 
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data.message);
-      alert(data.message);
-    } else {
-      const data = await response.json();
-      console.log(data.message);
-      alert(data.message);
-      setIsOn(false)
-    }
+    if (!response.ok) {
+      setIsOn(false);
+    } 
   };
 
   const handleToggle = () => {
@@ -67,6 +71,22 @@ function ToggleSwitch({ method, value }) {
         />
         <span className="slider"></span>
       </label>
+
+      <Modal open={openModal} onClose={()=>setOpenModal(false)}>
+            <div style={{ display:"flex",justifyContent:"center"}}>
+          <div className='div-modal-notifications'>
+          <h2>Mensagem</h2>
+          <br />
+          <p>{message}</p>
+        
+          <div  style={buttonStyles.buttonContainer}> 
+
+              <button onClick={()=>setOpenModal(false)} style={buttonStyles.noButton}>Fechar</button>
+              
+              </div>
+          </div>
+          </div>
+        </Modal>
     </div>
   );
 }

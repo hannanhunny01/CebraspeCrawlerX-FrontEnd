@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/navbar";
 import "./App.css"
 import MyRoutes from "./routes/routes";
 import { UserContext } from "./Context/userContext";
+import './styles/modal.css'
 
 const About = () => {
   return (

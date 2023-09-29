@@ -30,10 +30,11 @@ const Navbar = () => {
     <nav className="main-navbar-user">
       <div className="navbar-logo">
         <h2 className="navbar-logo-h2-hello">
-          <span>C</span>
-          <span>braspe</span>
-          <span>Crawler</span>
-          <span>X</span>
+          <span style={{fontSize:"29px"}}>C</span>
+          <span>BRASPE</span>
+          <span style={{fontSize:"29px"}}>C</span>
+          <span >RAWLER</span>
+          <span style={{fontSize:"29px"}}>X</span>
         </h2>
       </div>
       <div className="navbar-menu">
