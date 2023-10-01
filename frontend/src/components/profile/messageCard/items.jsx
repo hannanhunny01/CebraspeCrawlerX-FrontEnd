@@ -23,6 +23,14 @@ function Items(){
     const [isProcessing, setIsProcessing] = useState(Array(3).fill(false));   // when onclick to wait for api response to not send multiple request at once
     const [showModalTelegram,setShowModalTelegram] = useState(false);
 
+    const [accessToken,setAccessToken] = useState('');    // token for whatsapp acess
+    const [accessTokenInput,setAccessTokenInput] = useState(false);   // to make it visible
+    const [accessTokenInputError,setAccessTokenInputError] = useState(false);   // to check if has error on whatsapp token
+    const [hasTokenValidated,setHasTokenValidated] = useState(false);
+
+
+    
+
     const isProcessingFunc = (index) => {
       setIsProcessing((prevIsProcessing) => {
         const updatedIsProcessing = [...prevIsProcessing];
@@ -30,9 +38,21 @@ function Items(){
         return updatedIsProcessing;
       });
     };
+
   
+
+
+   
     const editFuc = (index)=>{
-     
+
+    if(index ===1 ){
+      if(!hasTokenValidated){
+        setAccessTokenInput(!accessTokenInput)
+        return;
+                  
+      }
+    }
+       
       const updateEdit =[...edit];
       updateEdit[index] = !updateEdit[index];
       setEdit(updateEdit);
@@ -46,6 +66,48 @@ function Items(){
      }
 
     }
+
+
+    const CheckAcessToken = function (token){
+      if(token.length === 15){
+        setAccessTokenInputError(false);
+        sendAcessToken()
+      }else{
+      setAccessTokenInputError(true);}
+    }
+
+    const sendAcessToken = async ()=>{
+      setAccessTokenInputError(false);
+      const requestOptions = {
+        method:"POST",
+        headers:{
+          Authorization: `Bearer ${token}`,
+          'Content-type':"application/json"
+        },
+        body:JSON.stringify({
+           accessToken:accessToken 
+
+        })
+      }
+      const response = await fetch("http://localhost:3000/api/profile/verifyLicense",requestOptions)
+      const data = await response.json();
+      alert(data.message)
+      if(response.ok){
+        setAccessTokenInput(false);
+        setHasTokenValidated(true);
+        const myedit =[...edit];
+        myedit[1]=true;
+        setEdit(myedit);
+      }
+     
+    }
+
+
+
+
+
+
+
     const sendCodeFuc = (index)=>{
          if(edit[index]){
             const updateSendCode = [...sendCode];
@@ -234,6 +296,27 @@ function Items(){
            </div>
             }
 
+            {/* whatsapp edit function for Token  */}
+
+               {accessTokenInput 
+                && item.name === "Whatsapp"   &&
+
+            <div className="send-code-container">
+            <input type="text" placeholder='Token Privado Recebido pelo Desenvolvedor' className="edit-number"  onChange={(event)=>{setAccessToken(event.target.value)}} value={accessToken}/>
+        
+             <button className="send-code-button"  onClick={()=>CheckAcessToken(accessToken)} >
+               ZAP TOKEN
+           </button>
+           </div>
+            }
+             {accessTokenInput &&  accessTokenInputError && item.name === "Whatsapp" &&
+
+           <div  style={{color:"red" ,textAlign:"center"}}>
+            <span>esse token esta invalido</span>
+            </div>
+            }
+
+
             {/*telegram Modal*/}
             {edit[index] && item.name === "Telegram" && 
 
@@ -276,7 +359,7 @@ function Items(){
           {sendCode[index] &&  item.name!=="Telegram" &&
           
           <div>
-            <span>Foi eviada um Codigo no seu whatsapp</span> <br />
+            <span>Foi eviada um Codigo  nesse {item.name}</span> <br />
             <div style={{display:"flex", justifyContent:"space-evenly" }}>
             <input type="text"   style={{width:"30%"}}/>
             <button  className='send-code-button' onClick={()=>checkCode(item.name,index)}>OK</button>
