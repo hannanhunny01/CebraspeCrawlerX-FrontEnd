@@ -35,3 +35,13 @@ export   function isValidEmail(email) {
   
     return legalCharactersPattern.test(password);
   }
+
+/*  export function isValidNumber(phoneNumber) {
+    if (/^\d{11}$/.test(phoneNumber)) {
+      if (phoneNumber.charAt(2) === '9') {
+        return true; // Valid phone number
+      }
+    }
+    
+    return false; // Invalid phone number
+  }  */

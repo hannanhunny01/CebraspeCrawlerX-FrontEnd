@@ -1,4 +1,6 @@
 
+
+/* this file has gotten very larg maybe in future someone can refactor this file  */
 import { useContext, useEffect, useState } from 'react';
 import './items.css';
 import ToggleSwitch from '../../button/toggleSwitch/switch';
@@ -11,16 +13,18 @@ import telegramCode from '../../../assets/telegram_code.jpeg'
 import telegramToken from '../../../assets/telegram_sendToken.jpeg'
 import telegramShowToken from '../../../assets/telegram_showToken.png'
 import './telegramModal.css'
+import { isValidEmail,isValidNumber } from '../../Validators/validators';
 
 function Items(){
 
     const [token] = useContext(UserContext);
-    const {userName,items} = useContext(ItemContext)
+    const {userName,items,setRefreshItem} = useContext(ItemContext)
     const [edit,setEdit] = useState( Array(3).fill(false));         // to open which edit option is Open
     const [sendCode,setSendCode]= useState( Array(3).fill(false));     // to remember which code box is open
     const [newContact, setNewContact] = useState(["", "", ""]);    // new contact arry
     const [code,setCode] = useState(["","",""]);           // to register for codes of all functiond
     const [isProcessing, setIsProcessing] = useState(Array(3).fill(false));   // when onclick to wait for api response to not send multiple request at once
+    const [processingLicense,setProcessingLicense] = useState(false);
     const [showModalTelegram,setShowModalTelegram] = useState(false);
 
     const [accessToken,setAccessToken] = useState('');    // token for whatsapp acess
@@ -29,7 +33,22 @@ function Items(){
     const [hasTokenValidated,setHasTokenValidated] = useState(false);
 
 
-    
+    // modal part 
+
+     const [openModal,setOpenModal] = useState(false);
+     const [message,setMessage] =useState("");
+   
+     
+
+
+
+
+
+    // edit input validation part in (red Error)
+    const [inputError,setInputError] = useState(Array(3).fill(false));
+    const [inputErrorMessage,setInputErrorMessage]= useState('');
+
+
 
     const isProcessingFunc = (index) => {
       setIsProcessing((prevIsProcessing) => {
@@ -69,6 +88,7 @@ function Items(){
 
 
     const CheckAcessToken = function (token){
+      setProcessingLicense(true);
       if(token.length === 15){
         setAccessTokenInputError(false);
         sendAcessToken()
@@ -76,7 +96,7 @@ function Items(){
       setAccessTokenInputError(true);}
     }
 
-    const sendAcessToken = async ()=>{
+    const sendAcessToken = async ()=>{                 // to verify license of whatsapp registration
       setAccessTokenInputError(false);
       const requestOptions = {
         method:"POST",
@@ -91,7 +111,10 @@ function Items(){
       }
       const response = await fetch("http://localhost:3000/api/profile/verifyLicense",requestOptions)
       const data = await response.json();
-      alert(data.message)
+      setMessage(data.message);
+      setOpenModal(true);
+      setTimeout(()=>{setOpenModal(false);
+      },3000)
       if(response.ok){
         setAccessTokenInput(false);
         setHasTokenValidated(true);
@@ -99,6 +122,8 @@ function Items(){
         myedit[1]=true;
         setEdit(myedit);
       }
+      setProcessingLicense(false);
+
      
     }
 
@@ -151,16 +176,16 @@ function Items(){
 
       const response = await fetch("http://localhost:3000/api/profile/sendCode",requestOptions)
       const data = await response.json()
+      setMessage(data.message);
+      setOpenModal(true);
+      setTimeout(()=>{setOpenModal(false);
+      },4000)
       console.log(response.status)
       if (response.status===201){
-        alert(data.message)
         sendCodeFuc(index)
       }else if(response.status === 200){
-        alert(data.message)
         if(sendCode[index]!==true){
         sendCodeFuc(index)}
-      }else{
-        alert(data.message)
       }
       isProcessingFunc(index)
 
@@ -170,6 +195,7 @@ function Items(){
         const tempCode =[...code]
         tempCode[index] = event.target.value
         setCode(tempCode)
+        console.log(code[index])
 
     }
 
@@ -197,10 +223,21 @@ function Items(){
       }
       const response = await fetch("http://localhost:3000/api/profile/registerProfile",requestOptions)
       const data = await response.json()
+      setMessage(data.message);
+      setOpenModal(true);
+      setTimeout(()=>{setOpenModal(false);
+      },4000)
       if(response.ok){
-        alert(data.message)
+          
+        setEdit([false,false,false])
+        setSendCode([false,false,false])
+        setNewContact(["","",""]);
+        setCode(['','','']);
+        setRefreshItem(true);
+
+       // alert(data.message)
       }else{
-        alert(data.message)
+       // alert(data.message)
       }
 
 
@@ -268,7 +305,11 @@ function Items(){
               <div>
 
               <label htmlFor="edit-button"  > Editar</label> 
-              <button className='edit-button' onClick={()=>{editFuc(index)}}>Editar</button>
+              {/* Edit Button  */}
+              <button className='edit-button' onClick={()=>{
+
+                                
+                editFuc(index)}}>Editar</button>
 
               </div>
 
@@ -304,7 +345,7 @@ function Items(){
             <div className="send-code-container">
             <input type="text" placeholder='Token Privado Recebido pelo Desenvolvedor' className="edit-number"  onChange={(event)=>{setAccessToken(event.target.value)}} value={accessToken}/>
         
-             <button className="send-code-button"  onClick={()=>CheckAcessToken(accessToken)} >
+             <button className="send-code-button"  onClick={()=>CheckAcessToken(accessToken)} disabled={processingLicense} >
                ZAP TOKEN
            </button>
            </div>
@@ -341,6 +382,23 @@ function Items(){
           </Modal>
             }
 
+            {/* whatsapp and general modal*/}
+            <Modal open={openModal} onClose={()=>setOpenModal(false)}>
+            <div style={{ display:"flex",justifyContent:"center"}}>
+          <div className='div-modal-notifications'>
+          <h2>Mensagem</h2>
+          <br />
+          <p>{message}</p>
+        
+          <div  style={buttonStyles.buttonContainer}> 
+
+              <button onClick={()=>setOpenModal(false)} style={buttonStyles.noButton}>Fechar</button>
+              
+              </div>
+          </div>
+          </div>
+        </Modal>
+
              
               {/* zap and email part */}
 
@@ -361,8 +419,8 @@ function Items(){
           <div>
             <span>Foi eviada um Codigo  nesse {item.name}</span> <br />
             <div style={{display:"flex", justifyContent:"space-evenly" }}>
-            <input type="text"   style={{width:"30%"}}/>
-            <button  className='send-code-button' onClick={()=>checkCode(item.name,index)}>OK</button>
+            <input type="text"   style={{width:"30%"}} onChange={(event)=>{updateCodeValues(index,event)}}/>
+            <button  className='send-code-button'  onClick={()=>checkCode(item.name,index)}>OK</button>
             
             <div><span>tempo Restante</span> <CountdownTimer timerName={item.name} /></div>
 

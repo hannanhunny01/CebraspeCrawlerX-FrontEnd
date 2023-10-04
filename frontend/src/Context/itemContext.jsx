@@ -9,6 +9,7 @@ export const ItemProvider = (props) => {
   const [items, setItems] = useState([]);
   const [userName, setUserName] = useState('');
   const [isLoading, setIsLoading] = useState(true); // Add a loading state
+  const [refreshItem,setRefreshItem] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,15 +41,17 @@ export const ItemProvider = (props) => {
           console.error("Error fetching data:", error);
         }
       };
+      setRefreshItem(false);
 
       fetchData();
     } else {
       navigate('/login');
     }
-  }, [token, navigate]);
+    console.log("running")
+  }, [token, navigate ,refreshItem]);
 
   return (
-    <ItemContext.Provider value={{ userName, items, isLoading }}>
+    <ItemContext.Provider value={{ userName, items, isLoading ,setRefreshItem}}>
       {props.children}
     </ItemContext.Provider>
   );
