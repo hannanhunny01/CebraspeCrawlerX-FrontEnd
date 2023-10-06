@@ -8,7 +8,7 @@ import Profile from '../pages/profile/profile'
 import ForgotPassword from '../pages/forgotPassword/forgotPassword'
 import ResetPassword from '../pages/resetPassword/resetPassword'
 import Status from '../pages/status/status'
- 
+import ContactPage from '../pages/contact/contact'
 function MyRoutes(){
 
 
@@ -25,7 +25,7 @@ function MyRoutes(){
           <Route exact path="/resetPassword/:id" element={<ResetPassword />} />
 
     
-         
+         <Route path="/contactt" element={<ContactPage />} />
     
           <Route path="/login" element={<LoginPage />} />
           <Route exact path="/signup" element={<SignUpPage />} />
