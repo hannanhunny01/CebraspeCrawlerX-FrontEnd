@@ -7,6 +7,7 @@ import MyCoursePage from '../pages/myCourse/myCourse'
 import Profile from '../pages/profile/profile'
 import ForgotPassword from '../pages/forgotPassword/forgotPassword'
 import ResetPassword from '../pages/resetPassword/resetPassword'
+import Status from '../pages/status/status'
  
 function MyRoutes(){
 
@@ -17,6 +18,8 @@ function MyRoutes(){
            <Route exact path="/contact" element={<Home />} />
     
            <Route exact path="/" element={<Home />} />
+           <Route exact path="/status" element={<Status />} />
+
     
           <Route  exact path="/forgotpassword" element={<ForgotPassword />}    />
           <Route exact path="/resetPassword/:id" element={<ResetPassword />} />

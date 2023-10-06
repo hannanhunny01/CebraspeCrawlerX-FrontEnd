@@ -1,0 +1,81 @@
+/* Terminal Container */
+.terminal-container {
+        background-color: #000;
+        color: #00ff00;
+        font-family: 'Courier New', monospace;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%; /* Make it responsive */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        max-height: 80%; /* Limit height to 80% of parent container */
+        overflow-y: auto; /* Add vertical scrollbar when content exceeds height */
+    }
+    
+    
+    .terminal-header {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    /* Customize scrollbar */
+    .terminal-container::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .terminal-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .terminal-container::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 20px;
+        border: 3px solid #f1f1f1;
+    }
+        
+    .red {
+        background-color: #ff5f56;
+    }
+    
+    .yellow {
+        background-color: #ffbd2e;
+    }
+    
+    .green {
+        background-color: #27c93f;
+    }
+    
+    /* Table Styling */
+    .terminal-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th,
+    td {
+        padding: 8px;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #333;
+        color: #fff;
+    }
+    
+    tr {
+        border-bottom: 1px solid #333;
+    }
+    
+    /* Status Color */
+    .Success {
+        color: #27c93f;
+    }
+    
+    .Failed {
+        color: #ff5f56;
+    }
+    
+    @media (max-width: 768px) {
+        .terminal-container {
+            font-size: 14px; 
+        }
+    }
