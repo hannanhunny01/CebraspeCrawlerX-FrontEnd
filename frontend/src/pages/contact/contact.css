@@ -1,3 +1,18 @@
 .main-contact-container{
   display: flex;
+  background-color: #f7f7f7 ;
+  width: 80%;
+  align-items: center;}
+.contact-container-information{
+  
+  width: 35%;
+  height: 80%;
+}
+.contact-container-message{
+  width: 40%;
+  height: 80%;
+}
+.main-contact-container{
+  display: flex;
+  justify-content: space-around;
 }

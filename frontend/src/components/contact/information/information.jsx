@@ -1,26 +1,35 @@
 import React from 'react';
-import './information.css'
+import './information.css';
+
 function Information() {
   return (
     <div className="contact-information-container">
-      <div className="contact-information-title">
-        Get in Contact with Us
-      </div>
-      <div className="contact-information-item">
-        <i className="fa fa-envelope"></i> Email:{' '}
-        <a href="mailto:your-email@gmail.com">your-email@gmail.com</a>
-      </div>
-      <div className="contact-information-item">
-        <i className="fa fa-instagram"></i> Instagram:{' '}
-        <a href="https://www.instagram.com/your-instagram-id" target="_blank" rel="noopener noreferrer">
-          your-instagram-id
-        </a>
-      </div>
-      <div className="contact-information-item">
-        <i className="fa fa-whatsapp"></i> WhatsApp:{' '}
-        <a href="https://wa.me/your-whatsapp-number" target="_blank" rel="noopener noreferrer">
-          your-whatsapp-number
-        </a>
+      <div className="contact-information-title">NOSSOS CONTATOS</div>
+      <div className="contact-information-items">
+        <div className="contact-information-item">
+          <i className="fa fa-envelope"></i>
+          <a href="mailto:hannanhoney5000@gmail.com">hannanhoney5000@gmail.com</a>
+        </div>
+        <div className="contact-information-item">
+          <i className="fa fa-instagram"></i>
+          <a
+            href="https://www.instagram.com/hannanhunny01"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @hannanhunny01
+          </a>
+        </div>
+        <div className="contact-information-item">
+          <i className="fa fa-whatsapp"></i>
+          <a
+            href="https://wa.me/7878787878"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            your-whatsapp-number
+          </a>
+        </div>
       </div>
     </div>
   );
