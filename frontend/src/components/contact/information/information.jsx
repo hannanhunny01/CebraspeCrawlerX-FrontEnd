@@ -27,8 +27,7 @@ function Information() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            your-whatsapp-number
-          </a>
+my whatsapp          </a>
         </div>
       </div>
     </div>

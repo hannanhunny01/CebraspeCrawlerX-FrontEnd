@@ -1,5 +1,3 @@
-// ContactPage.js
-
 import React from 'react';
 import './contact.css';
 import Navbar from '../../components/Navbar/navbar';
@@ -7,22 +5,20 @@ import Message from '../../components/contact/message/message';
 import Information from '../../components/contact/information/information';
 
 const ContactPage = () => {
-  const navbarHeight = 64; // Replace with the actual height of your Navbar component
-  const mainContactContainerHeight = `calc(100vh - ${navbarHeight}px)`;
-
   return (
     <div>
-      <Navbar/>
-
-      <div style={{display:"flex",justifyContent:"center" ,alignItems: "center",}}>  
-        <div className='main-contact-container' style={{margin: "auto", height: mainContactContainerHeight}}>
+      <Navbar />
+      <div className='centered-container-wrapper'>
+      <div className='centered-container'>
+        <div className='main-contact-container'>
           <div className='contact-container-information'>
-            <Information/>
+            <Information />
           </div>
           <div className='contact-container-message'>
-            <Message/>
+            <Message />
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

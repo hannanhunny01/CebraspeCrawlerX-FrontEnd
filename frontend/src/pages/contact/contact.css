@@ -1,18 +1,36 @@
-.main-contact-container{
+.main-contact-container {
   display: flex;
-  background-color: #f7f7f7 ;
-  width: 80%;
-  align-items: center;}
+  flex-direction: row; /* By default, it's a row for normal screens */
+  width: 90%;
+  align-items: center;
+  margin: 0 auto; /* Center the container horizontally */
+  padding: 20px; /* Add some padding for spacing */
+  max-width: 1200px; /* Adjust max-width as needed */
+justify-content: space-around;}
+
+
 .contact-container-information{
-  
-  width: 35%;
-  height: 80%;
+  width: 46%;
 }
-.contact-container-message{
-  width: 40%;
-  height: 80%;
+.contact-container-message {
+  width: 46%;
 }
-.main-contact-container{
+.centered-container-wrapper {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the wrapper takes up the full viewport height */
+  width: 100%;
+  justify-content: center;
+
+}
+@media (max-width: 768px) {
+  .main-contact-container {
+    flex-direction: column;
+    width:100%
+  }
+  .contact-container-information,
+  .contact-container-message {
+    width: 100%;
+    margin-top: 20px; /* Add some top margin for spacing */
+  }
 }
