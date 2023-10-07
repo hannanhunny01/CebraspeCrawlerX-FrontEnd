@@ -15,7 +15,6 @@ function MyRoutes(){
     return (
         <BrowserRouter>
         <Routes>
-           <Route exact path="/contact" element={<Home />} />
     
            <Route exact path="/" element={<Home />} />
            <Route exact path="/status" element={<Status />} />
@@ -25,7 +24,7 @@ function MyRoutes(){
           <Route exact path="/resetPassword/:id" element={<ResetPassword />} />
 
     
-         <Route path="/contactt" element={<ContactPage />} />
+         <Route path="/contact" element={<ContactPage />} />
     
           <Route path="/login" element={<LoginPage />} />
           <Route exact path="/signup" element={<SignUpPage />} />

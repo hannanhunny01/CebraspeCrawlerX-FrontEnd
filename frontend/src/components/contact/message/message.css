@@ -1,0 +1,94 @@
+.contact-messagecard-container {
+    display: flex;
+    flex-direction: column; /* Stack items vertically on small screens */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .contact-messagecard-left {
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .contact-messagecard-left h1 {
+    font-size: 36px;
+  }
+  
+  .contact-messagecard-right {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px; /* Add space between left and right on small screens */
+  }
+  
+  .contact-messagecard-form {
+    text-align: left;
+  }
+  
+  .contact-messagecard-input-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .contact-messagecard-submit-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .contact-messagecard-icons {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 24px;
+  }
+  
+  .contact-messagecard-icons a {
+    margin: 0 20px;
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .contact-messagecard-icons a:hover {
+    color: #007bff;
+  }
+  
+  /* Responsive styles for screens up to 768px wide */
+  @media (max-width: 768px) {
+    .contact-messagecard-container {
+      padding: 10px;
+    }
+  
+    .contact-messagecard-left h1 {
+      font-size: 24px;
+    }
+  
+    .contact-messagecard-right {
+      margin-top: 10px;
+    }
+  
+    .contact-messagecard-icons {
+      font-size: 20px;
+    }
+  }
+  
