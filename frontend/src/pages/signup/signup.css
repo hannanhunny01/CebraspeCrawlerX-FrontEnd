@@ -17,9 +17,15 @@
   background-color: #ffffff; /* Optional: Add a background color for the card */
 }
 
-h2 {
+.signup-card h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: #060000;
 }
 
 .form-group {

@@ -128,7 +128,6 @@ const SignUpPage = () => {
       }
 
       const verifyAndRegister = async ()=>{
-        console.log("a")
         setDisable(true);
         const requestOptions = {
           method: "POST",

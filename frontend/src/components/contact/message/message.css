@@ -3,7 +3,6 @@
   flex-direction: column;
   margin: 0 auto;
   width: 100%;
-  text-align: center;
   background-color: #ffffff;
   border-radius: 10px;
   border: 1px solid rgba(128, 128, 128, 0.2);
@@ -14,6 +13,16 @@
   border-radius: 10px;
   padding: 5px;
   margin-top: 20px;
+}
+.contact-messagecard-right h2{
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: #060000;
 }
 
 .contact-messagecard-input-group {
@@ -44,7 +53,7 @@ input[type="email"] {
 /* Make the "Message" input box larger and wider */
 textarea {
   width: 100%;
-  padding: 15px; /* Increase padding for better height */
+  padding: 19px; /* Increase padding for better height */
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 16px;

@@ -70,7 +70,20 @@
   .main-nav-two li a:hover {
     color: #ffffff;
   }
-  
+  .main-nav-two ul li{
+
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  }
+  .main-nav-three ul li{
+
+    font-size: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    }
  
   
   .main-nav-three ul {

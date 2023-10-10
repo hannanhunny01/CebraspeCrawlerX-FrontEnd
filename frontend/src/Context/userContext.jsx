@@ -6,6 +6,7 @@ export const UserProvider = (props) => {
   const [token, setToken] = useState(localStorage.getItem("mytoken"));
 
   useEffect(() => {
+
     const fetchUser = async () => {
       const requestOptions = {
         method: "GET",
@@ -23,7 +24,9 @@ export const UserProvider = (props) => {
       }
     };
 
-    fetchUser();
+    if(localStorage.getItem("mytoken") !== null){
+
+    fetchUser();}
   }, [token]);
 
   useEffect(() => {
