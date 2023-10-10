@@ -23,11 +23,11 @@ const Terminal = ({ commands }) => {
                         {commands.map((command, index) => (
                             <tr
                                 key={index}
-                                className={`command-row ${command.status}`}
+                                className={`command-row ${command.status?"Success":"Failed"}`}
                             >
-                                <td>{command.status}</td>
+                                <td>{command.status?"Success":"Failed"}</td>
                                 <td>{command.action}</td>
-                                <td>{command.timeChecked}</td>
+                                <td>{command.date}</td>
                             </tr>
                         ))}
                     </tbody>
