@@ -74,6 +74,12 @@
 .navbar-menu a:hover {
   color: #007bff; 
 }
+.navbar-menu ul li{
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
 
 
 .navbar-user {
@@ -130,6 +136,9 @@
 @media screen and (max-width: 768px) {
   .main-navbar-user {
     flex-direction: column;
+  }
+  .navbar-menu{
+    margin: 5px;
   }
   
   

@@ -37,8 +37,7 @@ label {
 }
 
 /* Adjust the height and width of the "Name" and "Email" input fields */
-input[type="text"],
-input[type="email"] {
+.contact-messagecard-input-group input{
   width: 100%;
   padding: 10px; /* Adjust the padding to make them smaller */
   border: 1px solid #ddd;

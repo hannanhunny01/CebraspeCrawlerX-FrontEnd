@@ -1,6 +1,7 @@
 import React from 'react';
 import facebook from "../../../assets/icons/facebookicon.png"
 import google from "../../../assets/icons/googleicon.png"
+import { Link } from 'react-router-dom';
 const FirstSection = ({ name, email, phone, setName, setEmail, setPhone  ,isError , setIsError,message}) => {
   console.log(isError,message)
   return (
@@ -46,6 +47,17 @@ const FirstSection = ({ name, email, phone, setName, setEmail, setPhone  ,isErro
               onChange={(e)=>setPhone(e.target.value)}
             />
           </div>
+          <label className="label" htmlFor="terms-check">
+          <input
+            type="checkbox"
+            id="terms-check"
+           
+          />
+          Aceitar os <Link to="/terms-and-conditions">Termos e Condições</Link>
+        </label>
+          <div className="form-group">
+       
+      </div>
           {isError &&  
 
           <div  style={{color:"red" ,textAlign:"center"}}>

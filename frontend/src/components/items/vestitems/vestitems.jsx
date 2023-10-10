@@ -46,7 +46,6 @@ function VestItems(){
           if (response.ok) {
             const itemsData = await response.json();
             setItems(itemsData)
-            console.log(items)
           }
         } catch (error) {
           console.error('Error fetching data:', error);
@@ -100,16 +99,21 @@ function VestItems(){
           </div>
         </Modal>
 
-        <Modal open={sucessModal} onClose={()=>setSucessModal(false)} >  
-          <div>
-            <br />
-            <br />
-             <h2> {modalMessage}</h2>
-             <br /> <br />
+        <Modal open={sucessModal} onClose={()=>setSucessModal(false)}>
+            <div style={{ display:"flex",justifyContent:"center"}}>
+          <div className='div-modal-notifications'>
+          <h2>Mesagem</h2>
+          <br />
+          <p>{modalMessage}</p>
+        
+          <div  style={buttonStyles.buttonContainer}> 
 
+              <button onClick={()=>setSucessModal(false)} style={buttonStyles.noButton}>Fechar</button>
+              
+              </div>
           </div>
-
-         </Modal>
+          </div>
+        </Modal>
       </>
     );
 }

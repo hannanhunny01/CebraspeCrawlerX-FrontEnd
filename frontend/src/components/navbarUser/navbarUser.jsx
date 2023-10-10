@@ -40,13 +40,10 @@ const Navbar = () => {
       <div className="navbar-menu">
         <ul>
           <li>
-            <NavLink to="/items">Increver</NavLink>
+            <NavLink to="/items">Assinar</NavLink>
           </li>
           <li>
-            <NavLink to="/myitems">Incritos</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Contact</NavLink>
+            <NavLink to="/myitems">minhas Assinaturas</NavLink>
           </li>
         </ul>
       </div>
