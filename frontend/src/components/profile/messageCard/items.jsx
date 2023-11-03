@@ -102,8 +102,9 @@ function Items() {
 
 
   const CheckAcessToken = function (token) {
-    setProcessingLicense(true);
     if (token.length === 15) {
+      setProcessingLicense(true);
+
       setAccessTokenInputError(false);
       sendAcessToken()
     } else {
