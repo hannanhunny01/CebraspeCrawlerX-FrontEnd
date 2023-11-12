@@ -1,16 +1,13 @@
-import React, { useContext } from "react";
-import { Route, Navigate } from "react-router-dom";
-import { UserContext } from "../Context/userContext";
+import { Outlet, Navigate } from 'react-router-dom'
+import { UserContext } from '../Context/userContext'
+import { useContext } from 'react'
 
-const ProtectedRoute = ({ element: Element, ...rest }) => {
-  const [token] = useContext(UserContext);
+const PrivateRoutes = () => {
 
-  return (
-    <Route
-      {...rest}
-      element={token ? <Element /> : <Navigate to="/login" replace />} 
-    />
-  );
-};
+    const token = useContext(UserContext)
+    return(
+        token ? <Outlet/> : <Navigate to="/login"/>
+    )
+}
 
-export default ProtectedRoute;
+export default PrivateRoutes

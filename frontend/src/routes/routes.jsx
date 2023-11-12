@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/home/home';
 import LoginPage from '../pages/login/login';
 import SignUpPage from '../pages/signup/signup';
@@ -9,9 +10,13 @@ import ForgotPassword from '../pages/forgotPassword/forgotPassword';
 import ResetPassword from '../pages/resetPassword/resetPassword';
 import Status from '../pages/status/status';
 import ContactPage from '../pages/contact/contact';
-import ProtectedRoute from './protectedRoutes';
+import PrivateRoutes from './protectedRoutes';
+
+import { UserContext } from '../Context/userContext';
 
 function MyRoutes() {
+  const token = useContext(UserContext);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -22,9 +27,15 @@ function MyRoutes() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-        <Route path="/items" element={<ProtectedRoute element={RegisterCoursePage} />} />
-        <Route path="/myitems" element={<MyCoursePage />} />
-        <Route path="/profile" element={<Profile />} />
+
+            <Route element={<PrivateRoutes />}>
+                <Route element={<RegisterCoursePage/>} path="/items" exact/>
+                <Route element={<MyCoursePage/>} path="/myitems"/>
+                <Route element={<Profile/>} path="/profile"/>
+            </Route>
+
+
+        
       </Routes>
     </BrowserRouter>
   );
