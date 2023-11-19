@@ -1,7 +1,7 @@
 {
-  "homepage":"https://hannanhunny01.github.io/CebraspeCrawlerX-FrontEnd",
+  "homepage":"https://hannanhunny01.github.io/",
   "name": "frontend",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
