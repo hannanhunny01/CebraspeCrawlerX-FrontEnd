@@ -1,5 +1,5 @@
 {
-  "homepage":"https://hannanhunny01.github.io/",
+  "homepage": "https://hannanhunny01.github.io/",
   "name": "frontend",
   "private": false,
   "version": "0.0.0",
@@ -9,16 +9,16 @@
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "predeploy":"npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
-
-    },
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "axios": "^1.4.0",
     "font-awesome": "^4.7.0",
+    "install": "^0.13.0",
     "mdb-react-ui-kit": "^6.1.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",

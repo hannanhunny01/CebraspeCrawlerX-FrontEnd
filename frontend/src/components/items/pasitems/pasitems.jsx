@@ -68,12 +68,12 @@ function PasItems() {
     };
 
     const response = await fetch("http://localhost:3000/api/items/registerPas", requestOptions);
-    
+    const data = await response.json();
+      onSuccess(data.message);
 
     if(response.ok){
       setItems(items.filter(item => item._id !== id));
-      const data = await response.json();
-      onSuccess(data.message);
+      
     }
 
 
