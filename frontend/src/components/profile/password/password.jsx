@@ -38,7 +38,7 @@ function PasswordCard(){
         }
 
 
-        const response = await fetch("http://localhost:3000/api/user/changepassword",requestOptions)
+        const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/user/changepassword`,requestOptions)
         const data = await response.json();
         setOpenModal(true);
         setMessage(data.message);

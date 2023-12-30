@@ -4,6 +4,7 @@ import { useContext ,useState,useEffect} from "react";
 import Card from "../../cardVestibular/card";
 import buttonStyles from "../styles";
 import Modal from "../../modal/modal";
+import NoDataComponent from "../noData";
 function MyVestItems(){
 
     const [token] = useContext(UserContext);
@@ -40,7 +41,7 @@ function MyVestItems(){
         };
   
         try {
-          const response = await fetch("http://localhost:3000/api/items/getMyVestibular", requestOptions);
+          const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/items/getMyVestibular`, requestOptions);
           
           if (response.ok) {
             const itemsData = await response.json();
@@ -52,6 +53,13 @@ function MyVestItems(){
       };
       fetchUser();
     }, [token ,render]); 
+
+    if(items.length === 0){
+      return (
+    
+      <div>  <NoDataComponent name="Vestibular"/></div>
+      )
+    }
 
 
     const handleClick = async (id) =>{
@@ -66,7 +74,7 @@ function MyVestItems(){
        })
   
       }
-      const response = await fetch("http://localhost:3000/api/items/delteVestibularByUser", requestOptions)
+      const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/items/delteVestibularByUser`, requestOptions)
       if(response.ok){
        setRender(!render);
       const data  = await response.json();

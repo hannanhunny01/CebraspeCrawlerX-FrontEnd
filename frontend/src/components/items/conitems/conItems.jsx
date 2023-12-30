@@ -4,6 +4,7 @@ import { UserContext } from "../../../Context/userContext";
 import Card from "../../cardVestibular/card";
 import Modal from "../../modal/modal";
 import buttonStyles from "../../myItems/styles";
+import LoadingSpinner from "../../loadingSpinner/loadingSpinner";
 function ConItems(){
 
    
@@ -61,6 +62,10 @@ function ConItems(){
       fetchUser();
     }, [token]); 
 
+    if(items.length === 0){
+      return <div><LoadingSpinner/></div>
+    }
+
     const handleClick = async function(id){
       
       const requestOptions = {
@@ -74,7 +79,7 @@ function ConItems(){
         })
       };
 
-      const response = await fetch("http://localhost:3000/api/items/registerConcurso", requestOptions);
+      const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/items/registerConcurso`, requestOptions);
       const data = await response.json();
       onSuccess(data.message);
 

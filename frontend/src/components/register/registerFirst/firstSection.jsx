@@ -2,7 +2,7 @@ import React from 'react';
 import facebook from "../../../assets/icons/facebookicon.png"
 import google from "../../../assets/icons/googleicon.png"
 import { Link } from 'react-router-dom';
-const FirstSection = ({ name, email, phone, setName, setEmail, setPhone  ,isError , setIsError,message}) => {
+const FirstSection = ({ name, email, phone, setName, setEmail, setPhone  ,isError , setIsError,message,hasAcepted, setHasAcepting}) => {
   console.log(isError,message)
   return (
     <div className="register-first-section">
@@ -51,7 +51,8 @@ const FirstSection = ({ name, email, phone, setName, setEmail, setPhone  ,isErro
           <input
             type="checkbox"
             id="terms-check"
-           
+            checked={hasAcepted}
+            onChange={(e)=>setHasAcepting(e.target.checked)}
           />
           Aceitar os <Link to="/terms-and-conditions">Termos e Condições</Link>
         </label>

@@ -3,6 +3,7 @@ import { UserContext } from "../../../Context/userContext";
 import Card from "../../cardVestibular/card";
 import Modal from "../../modal/modal";
 import buttonStyles from "../styles";
+import NoDataComponent from "../noData";
 function MyPasItems() {
   const [token] = useContext(UserContext);
   const [items, setItems] = useState([]); 
@@ -38,7 +39,7 @@ function MyPasItems() {
       };
 
       try {
-        const response = await fetch("http://localhost:3000/api/items/getMyPas", requestOptions);
+        const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/items/getMyPas`, requestOptions);
         
         if (response.ok) {
           const itemsData = await response.json();
@@ -50,6 +51,13 @@ function MyPasItems() {
     };
     fetchUser();
   }, [token,render]); 
+
+  if(items.length === 0){
+    return (
+  
+    <div>  <NoDataComponent name="Pas/Unb"/></div>
+    )
+  }
 
   const handleClick = async (id) =>{
     const requestOptions = {
@@ -63,7 +71,7 @@ function MyPasItems() {
      })
 
     }
-    const response = await fetch("http://localhost:3000/api/items/deltePasByUser", requestOptions)
+    const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/items/deltePasByUser`, requestOptions)
     if(response.ok){
      setRender(!render);
     const data  = await response.json();

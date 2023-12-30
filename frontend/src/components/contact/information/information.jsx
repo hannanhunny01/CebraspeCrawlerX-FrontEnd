@@ -13,21 +13,21 @@ function Information() {
         <div className="contact-information-item">
           <i className="fa fa-instagram"></i>
           <a
-            href="https://www.instagram.com/hannanhunny01"
+            href="https://www.instagram.com/cebraspecrawlerx"
             target="_blank"
             rel="noopener noreferrer"
           >
-            @hannanhunny01
+            @cebraspecrawlerx
           </a>
         </div>
         <div className="contact-information-item">
           <i className="fa fa-whatsapp"></i>
           <a
-            href="https://wa.me/7878787878"
+            href="https://wa.me/61998595632"
             target="_blank"
             rel="noopener noreferrer"
           >
-my whatsapp          </a>
+61 99859-5632       </a>
         </div>
       </div>
     </div>

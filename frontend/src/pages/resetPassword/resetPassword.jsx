@@ -36,7 +36,7 @@ export default function ResetPassword (){
         })
     }
 
-    const response = await fetch(`http://localhost:3000/api/user/resetPassword/${id}`,requestOptions)
+    const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/user/resetPassword/${id}`,requestOptions)
     const data = await response.json()
     setOpenModal(true)
     setMessageServer(data.message)

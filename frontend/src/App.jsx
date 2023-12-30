@@ -12,6 +12,7 @@ import './styles/modal.css'
 
 const App = () => {
   const token = useContext(UserContext)
+  console.log(import.meta.env.VITE_HOST_PORT)
   return (
     <div className="app">
     <MyRoutes/>

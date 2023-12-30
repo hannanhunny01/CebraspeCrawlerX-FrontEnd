@@ -34,7 +34,7 @@ function Message() {
       body: JSON.stringify({ name:nome, email, message:mensagem }),
     };
 
-    const response = await fetch('http://localhost:3000/api/message', requestOptions);
+    const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/message`, requestOptions);
     const data = await response.json();
     if (response.ok) {
       setNome('');

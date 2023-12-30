@@ -25,7 +25,7 @@ export const ItemProvider = (props) => {
 
         try {
           const response = await fetch(
-            "http://localhost:3000/api/profile/sendUserProfile",
+            `${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/profile/sendUserProfile`,
             requestOptions
           );
           if (response.ok) {

@@ -3,6 +3,7 @@ import { UserContext } from "../../../Context/userContext";
 import Card from "../../cardVestibular/card";
 import buttonStyles from "../../myItems/styles";
 import Modal from "../../modal/modal";
+import LoadingSpinner from "../../loadingSpinner/loadingSpinner";
 function PasItems() {
   const [token] = useContext(UserContext);
   const [items, setItems] = useState([]);
@@ -52,7 +53,9 @@ function PasItems() {
     };
     fetchUser();
   }, [token]); 
-
+  if(items.length === 0){
+    return <div><LoadingSpinner/></div>
+  }
 
   const handleClick = async function(id){
       
@@ -67,7 +70,7 @@ function PasItems() {
       })
     };
 
-    const response = await fetch("http://localhost:3000/api/items/registerPas", requestOptions);
+    const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/items/registerPas`, requestOptions);
     const data = await response.json();
       onSuccess(data.message);
 

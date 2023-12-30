@@ -16,7 +16,7 @@ export const UserProvider = (props) => {
         },
       };
 
-      const response = await fetch("http://localhost:3000/api/user/checkToken", requestOptions);
+      const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/user/checkToken`, requestOptions);
 
       if (!response.ok) {
         setToken(null);

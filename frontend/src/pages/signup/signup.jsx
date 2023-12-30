@@ -35,8 +35,9 @@ const SignUpPage = () => {
   const [ openModal,setOpenModal] = useState(false);
   const [codeMessage,setCodeMessage] = useState("")
 
+  const [hasAcepted , setHasAcepting] = useState(false);
 
-  const components =[<FirstSection name={name} email={email} phone={confirmEmail} setEmail={setEmail} setName={setName} setPhone={setConfirmEmail}  message={message}  isError={isError} setIsError={setIsError} />,
+  const components =[<FirstSection name={name} email={email} phone={confirmEmail} setEmail={setEmail} setName={setName} setPhone={setConfirmEmail}  message={message}  isError={isError} setIsError={setIsError} hasAcepted={hasAcepted} setHasAcepting={setHasAcepting}/>,
                      <SecondSection password={password} setPassword={setPassword} rePassword={rePassword} setRePassword={setRePassword} isErrorPassword={isErrorPassword} message={messagePassword}/>,
                      <ThirdSection phone={email} code={code} setCode={setCode} timer={timer} setTimer={setTimer} />]
   const [currPage,setCurrPage] = useState(0);
@@ -52,7 +53,7 @@ const SignUpPage = () => {
       };
 
       try {
-        const response = await fetch("http://localhost:3000/api/user/checkUser", requestOptions);
+        const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/user/checkUser`, requestOptions);
         
         if (response.ok) {
 
@@ -110,7 +111,7 @@ const SignUpPage = () => {
         };
   
         try {
-          const response = await fetch("http://localhost:3000/api/user/sendCode", requestOptions);
+          const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/user/sendCode`, requestOptions);
           const data = await response.json();
           setCodeMessage(data.message);
           setOpenModal(true);
@@ -142,7 +143,7 @@ const SignUpPage = () => {
           })
         };
         try {
-          const response = await fetch("http://localhost:3000/api/user/register", requestOptions);
+          const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/user/register`, requestOptions);
           const data = await response.json()
           setCodeMessage(data.message)
           setOpenModal(true);
@@ -191,14 +192,28 @@ const SignUpPage = () => {
 
               if (email === confirmEmail ){
 
-                if (isValidEmail(email)){
-                  checkEmail()
-                 }else{
-                  setIsError(true)
-                  setMessage("PorFavor Digite email valido")
+                if(name.length>3){
 
-    
-                 }
+                  if(hasAcepted){
+                    if (isValidEmail(email)){
+                      checkEmail()
+                     }else{
+                      setIsError(true)
+                      setMessage("PorFavor Digite email valido")
+                     }
+                  }else{
+                    setIsError(true)
+                    setMessage("PorFavor aceite os termos e condicoes")
+                  }
+
+                  
+                }else{
+                  setIsError(true)
+                  setMessage("PorFavor Digite nome valido")
+
+                }
+
+               
 
               }else{
                 setIsError(true)

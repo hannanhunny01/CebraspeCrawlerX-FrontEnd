@@ -125,7 +125,7 @@ function Items() {
 
       })
     }
-    const response = await fetch("http://localhost:3000/api/profile/verifyLicense", requestOptions)
+    const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/profile/verifyLicense`, requestOptions)
     const data = await response.json();
     setMessage(data.message);
     setOpenModal(true);
@@ -207,7 +207,7 @@ function Items() {
       })
     }
 
-    const response = await fetch("http://localhost:3000/api/profile/sendCode", requestOptions)
+    const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/profile/sendCode`, requestOptions)
     const data = await response.json()
     setMessage(data.message);
     setOpenModal(true);
@@ -257,7 +257,7 @@ function Items() {
 
       })
     }
-    const response = await fetch("http://localhost:3000/api/profile/registerProfile", requestOptions)
+    const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/profile/registerProfile`, requestOptions)
     const data = await response.json()
     setMessage(data.message);
     setOpenModal(true);
@@ -299,7 +299,7 @@ function Items() {
 
       })
     }
-    const response = await fetch("http://localhost:3000/api/profile/verifyTelegram", requestOptions)
+    const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/profile/verifyTelegram`, requestOptions)
     const data = await response.json()
     if (response.ok) {
       alert(data.message)

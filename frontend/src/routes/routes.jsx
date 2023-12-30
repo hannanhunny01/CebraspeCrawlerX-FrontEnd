@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route ,Navigate } from 'react-router-dom';
 import Home from '../pages/home/home';
 import LoginPage from '../pages/login/login';
 import SignUpPage from '../pages/signup/signup';
@@ -11,7 +11,7 @@ import ResetPassword from '../pages/resetPassword/resetPassword';
 import Status from '../pages/status/status';
 import ContactPage from '../pages/contact/contact';
 import PrivateRoutes from './protectedRoutes';
-
+import TermAndConditions from '../pages/terms/termsAndCondition';
 import { UserContext } from '../Context/userContext';
 
 function MyRoutes() {
@@ -27,7 +27,7 @@ function MyRoutes() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
-
+        <Route path="/terms-and-conditions" element={<TermAndConditions />} />
             <Route element={<PrivateRoutes />}>
                 <Route element={<RegisterCoursePage/>} path="/items" exact/>
                 <Route element={<MyCoursePage/>} path="/myitems"/>
@@ -35,7 +35,8 @@ function MyRoutes() {
             </Route>
 
 
-        
+            <Route path="*" element={<Navigate to="/login" />} />
+
       </Routes>
     </BrowserRouter>
   );

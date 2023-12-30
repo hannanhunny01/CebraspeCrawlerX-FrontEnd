@@ -4,6 +4,7 @@ import { useContext ,useState,useEffect} from "react";
 import Card from "../../cardVestibular/card";
 import Modal from "../../modal/modal";
 import buttonStyles from "../../myItems/styles";
+import LoadingSpinner from "../../loadingSpinner/loadingSpinner";
 function VestItems(){
 
     const [token] = useContext(UserContext);
@@ -41,7 +42,7 @@ function VestItems(){
         };
   
         try {
-          const response = await fetch("http://localhost:3000/api/items/getVestibular", requestOptions);
+          const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/items/getVestibular`, requestOptions);
           
           if (response.ok) {
             const itemsData = await response.json();
@@ -53,6 +54,10 @@ function VestItems(){
       };
       fetchUser();
     }, [token]);
+
+    if(items.length === 0){
+      return <div><LoadingSpinner/></div>
+    }
     
     const handleClick = async function(id){
       
@@ -67,7 +72,7 @@ function VestItems(){
         })
       };
   
-      const response = await fetch("http://localhost:3000/api/items/registerVestibular", requestOptions);
+      const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/items/registerVestibular`, requestOptions);
       const data = await response.json();
       onSuccess(data.message);
   

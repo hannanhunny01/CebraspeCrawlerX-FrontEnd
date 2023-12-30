@@ -50,8 +50,9 @@ navigate('/items')    }
   };
 
    try{
-    
-    const response = await fetch("http://localhost:3000/api/user/login", requestOptions);
+    console.log(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/user/login`);
+
+    const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/user/login`, requestOptions);
     const data = await response.json()
     setOpenModal(true);
     setMessage(data.message)

@@ -3,7 +3,7 @@ import { useState,useEffect,useContext } from "react";
 import { UserContext } from "../../../Context/userContext";
 import Card from "../../cardVestibular/card";
 import Modal from "../../modal/modal";
-
+import NoDataComponent from "../noData";
 
 import buttonStyles from "../styles";
 function MyConItems(){
@@ -46,7 +46,7 @@ function MyConItems(){
         };
   
         try {
-          const response = await fetch("http://localhost:3000/api/items/getMyConcurso", requestOptions);
+          const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/items/getMyConcurso`, requestOptions);
           
           if (response.ok) {
             const itemsData = await response.json();
@@ -59,8 +59,14 @@ function MyConItems(){
       };
       fetchUser();
     }, [token,render]); 
-
-
+    
+    if(items.length === 0){
+      return (
+    
+      <div>  <NoDataComponent name="Concursos"/></div>
+      )
+    }
+    
     const handleClick = async (id) =>{
      const requestOptions = {
         method: 'DELETE' ,
@@ -73,7 +79,7 @@ function MyConItems(){
       })
 
      }
-     const response = await fetch("http://localhost:3000/api/items/delteConcursoByUser", requestOptions)
+     const response = await fetch(`${import.meta.env.VITE_HOST}:${import.meta.env.VITE_HOST_PORT}/api/items/delteConcursoByUser`, requestOptions)
      if(response.ok){
       setRender(!render);
      const data  = await response.json();
