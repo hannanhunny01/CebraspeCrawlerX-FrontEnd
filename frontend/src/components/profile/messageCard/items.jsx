@@ -30,6 +30,7 @@ function Items() {
   const [isProcessing, setIsProcessing] = useState(Array(3).fill(false));   // when onclick to wait for api response to not send multiple request at once
   const [processingLicense, setProcessingLicense] = useState(false);
   const [showModalTelegram, setShowModalTelegram] = useState(false);
+  const [showModalWhatsapp, setShowModalWhatsapp] = useState(false);
 
   const [accessToken, setAccessToken] = useState('');    // token for whatsapp acess
   const [accessTokenInput, setAccessTokenInput] = useState(false);   // to make it visible
@@ -80,7 +81,8 @@ function Items() {
 
     if (index === 1) {
       if (!hasTokenValidated) {
-        setAccessTokenInput(!accessTokenInput)
+        setShowModalWhatsapp(true);
+        setAccessTokenInput(!accessTokenInput);
         return;
 
       }
@@ -97,6 +99,7 @@ function Items() {
     if (index === 0 && updateEdit[index] === true) {
       setShowModalTelegram(true);
     }
+    
 
   }
 
@@ -396,6 +399,25 @@ function Items() {
               <span>esse token esta invalido</span>
             </div>
           }
+
+          {/*Whatsapp Modal*/}
+          {accessTokenInput && item.name === "Whatsapp" &&
+
+            <Modal open={showModalWhatsapp} onClose={() => setShowModalWhatsapp(false)}>
+              <div className='modal-telegram-container'>
+                <h2>Whatsapp está em versão Beta </h2>
+                 <p>para utilizar o serviço whatsapp você precisa entrar em contato com a equipe cebraspecrawlerx, você pode entrar enviando mensagem para um desses contatos</p>
+                 <p>WhatsApp:- <span>61 998585632</span> </p> <p>ou manda mesagem no instagaram <span>cebraspecrawlerx</span> </p>  
+                 <span>Eles lhe darão chave licença que podem ser usadas para usar este serviço </span>              
+                <div style={buttonStyles.buttonContainer}>
+
+                  <button onClick={() => setShowModalWhatsapp(false)} style={buttonStyles.noButton}>Fechar</button>
+
+                </div>
+              </div>
+            </Modal>
+          }
+
 
 
           {/*telegram Modal*/}

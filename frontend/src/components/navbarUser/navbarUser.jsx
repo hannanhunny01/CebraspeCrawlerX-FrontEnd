@@ -60,7 +60,7 @@ const Navbar = () => {
               <NavLink to="/profile">Meu Perfil</NavLink>
             </li>
             <li>
-              <NavLink to="/terms">Termo & Servicos</NavLink>
+              <NavLink to="/terms-and-conditions">Termo & Servicos</NavLink>
             </li>
             <li onClick={logout}>
              Logout
